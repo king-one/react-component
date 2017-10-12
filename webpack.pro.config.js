@@ -12,7 +12,8 @@ const proConfig = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      _PRE_:'sw'
     }),
     new CleanWebpackPlugin(['dist']),
     new webpack.optimize.UglifyJsPlugin({
