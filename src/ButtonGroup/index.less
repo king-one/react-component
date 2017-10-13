@@ -1,0 +1,41 @@
+    /*
+ * @Author: chen gong 
+ * @Date: 2017-10-13 13:05:48 
+ * @Last Modified by: chen gong
+ * @Last Modified time: 2017-10-13 15:08:42
+ */
+
+    @import '../variables.less';
+    @btn-group-prefix-cls: ~"@{sw-prefix}-btn-group";
+    @btn-prefix-cls: ~"@{sw-prefix}-btn";
+    .@{btn-group-prefix-cls} {
+        display: inline-block;
+        .@{btn-prefix-cls} {
+            border-right-width: 0px;
+            margin-left: 0px;
+            border-radius: 0px;
+        }
+    }
+    .@{btn-group-prefix-cls}-horizontal {
+        .@{btn-prefix-cls} {
+             :first-child {
+                border-radius: 2px 0 0 2px;
+            }
+             :last-child {
+                border-right-width: 1px;
+                border-radius: 0 2px 2px 0;
+            }
+        }
+    }
+    .@{btn-group-prefix-cls}-vertical {
+        display: inline-block;
+        vertical-align: middle;
+    }
+     .@{btn-group-prefix-cls}-bettween {
+        display: flex;
+        justify-content: space-between;
+    }
+    .@{btn-group-prefix-cls}-around {
+        display: flex;
+        justify-content: space-around;
+    }
