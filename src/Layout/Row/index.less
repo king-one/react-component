@@ -1,0 +1,27 @@
+@import '../../variables.less';
+@row-prefix-cls: ~"@{sw-prefix}"-row;
+@col-prefix-cls: ~"@{sw-prefix}"-col;
+.@{row-prefix-cls} {
+    .clearfix()
+}
+
+.@{row-prefix-cls}-gutter {
+    margin-left: -8px;
+    margin-right: -8px;
+    >.@{col-prefix-cls} {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+.@{row-prefix-cls}-fluid {
+    >.@{col-prefix-cls} {
+        float: left;
+    }
+}
+
+.@{row-prefix-cls} {
+    .@{col-prefix-cls}-fr {
+        float: right;
+    }
+}

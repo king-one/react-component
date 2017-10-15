@@ -5,9 +5,10 @@
  * @Last Modified time: 2017-10-13 18:10:00
  */
 /*布局规则与使用 参考bootsrap*/
-import React, { Component, PropTypes } from 'react'
-import classnames from 'classnames'
-import './index.less'
+import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
+import './index.less';
+
 const propTypes = {
     prefixCls: PropTypes.string,
     col: PropTypes.string,
