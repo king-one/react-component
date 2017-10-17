@@ -1,4 +1,4 @@
-import React, { Compotent, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import './index.less';
 
@@ -17,7 +17,7 @@ class Row extends Component {
         const classNames = classnames(
             prefixCls,
             {
-                [`${prefixCls}-gutter`]: gutther,
+                [`${prefixCls}-gutther`]: gutther,
                 [`${prefixCls}-fluid`]: fluid
             },
             className
