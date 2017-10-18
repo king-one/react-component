@@ -10,7 +10,7 @@ const propTypes = {
     index: PropTypes.string,
     overlayCls: PropTypes.string
   };
-class PopupMenu extends CommonMenu {
+class SubPopupMenu extends CommonMenu {
   handleClick = (e, index) => {
     const { onClick } = this.props;
     onClick(e, index);
@@ -20,16 +20,16 @@ class PopupMenu extends CommonMenu {
     if (!c) {
       return null;
     }
-    const { index } = this.props;
+     const { index } = this.props;
+     console.log(this)
     return this.renderCommonMenuItem(c, i, index);
   };
 
   render() {
-    const { children, prefixCls, visible, overlayCls } = this.props;
+    const { children, prefixCls, visible } = this.props;
     const classNames = classnames(
         `${prefixCls}-menu`, 
-        `${prefixCls}-submenu-content`, 
-        overlayCls)
+        `${prefixCls}-submenu-content`)
     if (!visible) {
       return null;
     }
@@ -42,5 +42,5 @@ class PopupMenu extends CommonMenu {
     );
   }
 }
-PopupMenu.propTypes = propTypes;
-export default PopupMenu;
+SubPopupMenu.propTypes = propTypes;
+export default SubPopupMenu;

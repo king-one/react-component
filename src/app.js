@@ -11,8 +11,8 @@ class Root extends Component {
         alert(0)
     }
     onClick = (e, key) => {
-     console.log(key);
-}
+        console.log(key);
+    }
     render() {
         return (
             <div>
@@ -76,20 +76,28 @@ class Root extends Component {
                     </Row>
                 </div>
                 <div>
-                    <Menu
-                        className="hello"
-                        onClick={this.onClick}
-                    >
-                        <MenuItem key="1-1" className="food">食品分类</MenuItem>
-                        <MenuItem key="1-2" disabled>服装分类</MenuItem>
-                        <SubMenu title={"电器分类"} overlayClassName="sub">
-                            <MenuItem key="2-1" className="tv">电视机</MenuItem>
-                            <MenuItem key="2-2" disabled>笔记本</MenuItem>
-                            <MenuItem key="2-3">洗衣机</MenuItem>
+                    <Menu className="simple" onClick={this.onClick}>
+                        <MenuItem>广东</MenuItem>
+                        <SubMenu title="江苏">
+                            <MenuItem>苏州</MenuItem>
+                            <MenuItem>无锡</MenuItem>
+                            <MenuItem>常州</MenuItem>
+                            <MenuItem>镇江</MenuItem>
+                            <SubMenu title="南京">
+                                <MenuItem>江宁区</MenuItem>
+                                <MenuItem>仙林区</MenuItem>
+                            </SubMenu>
                         </SubMenu>
-                        <SubMenu title={"美妆分类"}>
-                            <MenuItem key="3-1">眼影</MenuItem>
-                            <MenuItem key="3-2">洗面奶</MenuItem>
+                        <MenuItem disabled>山东</MenuItem>
+                        <MenuItem >湖北</MenuItem>
+                        <SubMenu title="浙江">
+                            <SubMenu title="杭州">
+                                <MenuItem>西湖区</MenuItem>
+                                <MenuItem>上城区</MenuItem>
+                            </SubMenu>
+                            <MenuItem>温州</MenuItem>
+                            <MenuItem>绍兴</MenuItem>
+                            <MenuItem>嘉兴</MenuItem>
                         </SubMenu>
                     </Menu>
                 </div>

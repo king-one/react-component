@@ -7,20 +7,22 @@ export default class MenuItem extends Component {
     prefixCls: PropTypes.string,
   };
   static defaultProps = {
-    prefixCls: _PRE_ +'menu-item'
+    prefixCls: _PRE_ +'-menu-item'
   };
 
   onClick = e => {
     const { index, onClick, disabled } = this.props;
+
     if (disabled) return;
+
     onClick(e, index);
   };
 
   render() {
-    const { prefixCls,className, children, disabled } = this.props;
+    const { prefixCls,className, children, disabled} = this.props;
     const classNames = classnames(
         prefixCls,
-        {[`${prefixCls}-menu-item-disabled`]: disabled},
+        {[`${prefixCls}-disabled`]: disabled},
         className
     )
     return (

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-const getKeyFromChildrenIndex = (child, index, subPrefix = 'item') =>{
+const getKeyFromChildrenIndex = (child, index, subPrefix='item') =>{
       return child.key || `${subPrefix}_${index}`;
   }
 export default class CommonMenu extends Component {

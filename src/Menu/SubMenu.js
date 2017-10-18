@@ -7,7 +7,6 @@ export default class SubMenu extends Component {
         title: PropTypes.string,
         prefixCls: PropTypes.string,
         className: PropTypes.string,
-        overlayClassName: PropTypes.string,
         disabled: PropTypes.bool,
         onClick: PropTypes.func
     };
@@ -49,7 +48,7 @@ export default class SubMenu extends Component {
     };
 
     renderContent = () => {
-        const { prefixCls, children, index, overlayClassName } = this.props;
+        const {prefixCls, children,index} = this.props;
 
         return (
             <SubPopupMenu
@@ -57,7 +56,6 @@ export default class SubMenu extends Component {
                 visible={this.state.subMenuVisible}
                 onClick={this.handleClick}
                 index={index}
-                overlayCls={overlayClassName}
             >
                 {children}
             </SubPopupMenu>
@@ -65,8 +63,8 @@ export default class SubMenu extends Component {
     };
 
     render() {
-        const { prefixCls, className, disabled, title, ...other } = this.props;
-
+        
+        const { prefixCls, className, disabled, title} = this.props;
         const mouseEvents = disabled
             ? {}
             : {
@@ -81,11 +79,11 @@ export default class SubMenu extends Component {
             },
             className
         );
-
+              
         return (
             <li className={classNames}
                 {...mouseEvents}
-                {...other}>
+                >
                 <div
                     className={classnames(`${prefixCls}-submenu-title`, {
                         [`${prefixCls}-submenu-disabled`]: disabled

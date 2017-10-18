@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import CommonMenu from './CommonMenu';
 import MenuItem from './MenuItem';
 import SubMenu from './SubMenu';
+import './index.less';
 const propTypes = {
     prefix: PropTypes.string,
     className: PropTypes.string,
@@ -13,6 +14,7 @@ const defaultProps = {
 };
 class Menu extends CommonMenu {
     handleClick = (e, key) => {
+        e.stopPropagation();
         const { onClick } = this.props;
         onClick && onClick(e, key);
     };
@@ -21,13 +23,11 @@ class Menu extends CommonMenu {
         if (!c) {
             return null;
         }
-        console.log(this)
         return this.renderCommonMenuItem(c, i, index);
     };
 
     render() {
         const { children, prefixCls, className } = this.props;
-        console.log()
         return (
             <ul className={classnames(`${prefixCls}-menu`, className)}>
                 {React.Children.map(children, this.renderMenuItem)}
