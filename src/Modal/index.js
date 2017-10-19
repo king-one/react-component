@@ -51,7 +51,7 @@ class Modal extends Component {
     };
 
     static defaultProps = {
-        prefixCls: _PRE_ +'modal',
+        prefixCls: _PRE_ +'-modal',
         width            : 400,
         height           : 240,
         measure          : 'px',
@@ -122,6 +122,7 @@ class Modal extends Component {
     }
 
     render() {
+        debugger
         const {prefixCls,className,children,closeMaskOnClick,onClose,showMask,
               animationType,isShow,duration,customMaskStyles,...ohter} = this.props;
         const onClick = closeMaskOnClick ? onClose : null;
@@ -141,7 +142,7 @@ class Modal extends Component {
         return (
             <div
                 style={style}
-                className={className}
+                className={classNames}
                 onAnimationEnd={this.animationEnd}
                 tabIndex="-1"
                 ref={el => { this.el = el; }}

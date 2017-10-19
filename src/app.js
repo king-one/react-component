@@ -8,11 +8,22 @@ import Modal from './Modal';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 class Root extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { visible: false };
+    }
     handleClick() {
         alert(0)
     }
     onClick = (e, key) => {
         console.log(key);
+    }
+    show() {
+        this.setState({ visible: true });
+    }
+
+    hide() {
+        this.setState({ visible: false });
     }
     render() {
         return (
@@ -102,9 +113,14 @@ class Root extends Component {
                         </SubMenu>
                     </Menu>
                 </div>
+                <br></br>
                 <div>
-                    <Modal/>
-                </div>
+                        <Button onClick={this.show.bind(this)}>show</Button>
+
+                        <Modal visible={this.state.visible} onClose={this.hide.bind(this)}>
+                            <div>Content</div>
+                        </Modal>
+            </div>
             </div>
 
         )
