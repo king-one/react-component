@@ -4,6 +4,7 @@ import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import { Col, Row } from './Layout';
 import Menu from './Menu';
+import Modal from './Modal';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 class Root extends Component {
@@ -100,6 +101,9 @@ class Root extends Component {
                             <MenuItem>嘉兴</MenuItem>
                         </SubMenu>
                     </Menu>
+                </div>
+                <div>
+                    <Modal/>
                 </div>
             </div>
 

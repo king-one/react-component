@@ -1,0 +1,230 @@
+@import'../variables.less';
+@modal-prefix-cls: ~"sw-modal";
+.@{modal-prefix-cls},
+.@{modal-prefix-cls}-mask {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.@{modal-prefix-cls} {
+    position: fixed;
+}
+
+
+/* -- mask -- */
+
+.@{modal-prefix-cls}-mask {
+    position: absolute;
+    background: rgba(0, 0, 0, .3);
+}
+
+
+/* -- dialog -- */
+
+.@{modal-prefix-cls}-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 101;
+    padding: 15px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+
+/* -- close button -- */
+
+.@{modal-prefix-cls}-close {
+    position: absolute;
+    cursor: pointer;
+    top: 16px;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.@{modal-prefix-cls}-close:before,
+.@{modal-prefix-cls}-close:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #999;
+    border-radius: 100%;
+    transition: background .2s;
+}
+
+.@{modal-prefix-cls}-close:before {
+    transform: rotate(45deg);
+}
+
+.@{modal-prefix-cls}-close:after {
+    transform: rotate(-45deg);
+}
+
+.@{modal-prefix-cls}-close:hover:before,
+.@{modal-prefix-cls}-close:hover:after {
+    background: #333;
+}
+
+
+.animation(@type, @enterstyle,@leavestyle,@enterframes, @leaveframes) {
+    @animate: ~".@{modal-prefix-cls}-@{type}";
+    @keyf: ~"@{modal-prefix-cls}-@{type}";
+    @{animate}-enter {
+        animation: ~"@{animate}-enter" @enterstyle;
+        & when (@type ='flip') {
+            backface-visibility: visible;
+        }
+        & when (@type ='rotate') {
+            transform-origin: center;
+        }
+    }
+    @{animate}-leave {
+        animation: ~"@{animate}-leave" @leavestyle;
+        & when (@type ='flip') {
+            backface-visibility: visible;
+        }
+        & when (@type ='rotate') {
+            transform-origin: center;
+        }
+    }   
+   @keyframes ~"@{keyf}-enter"{
+       @enterframes();     
+    }
+   @keyframes ~"@{keyf}-leave" {
+        @leaveframes() ;
+    }
+}
+/* -- fade -- */
+
+.animation(@type: 'fade', @enterstyle: 'both ease-in', @leavestyle: 'both ease-in', @enterframes: {
+
+    from {
+        opacity: 0;
+    }
+}, @leaveframes: {
+    to {
+        opacity: 0;
+    }
+});
+/* -- zoom -- */
+
+.animation(@type: 'fade', @enterstyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @leavestyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @enterframes: {
+    from {
+        transform: scale3d(.3, .3, .3);
+    }
+}
+, @leaveframes: {
+    to {
+        transform: scale3d(.3, .3, .3);
+    }
+}
+
+);
+
+/* -- slide -- */
+
+.slide(@type: 'slideUp') {
+    .animation(@type, @enterstyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @leavestyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @enterframes: {
+        from {
+            & when(@type='slideDown') {
+                transform: translate3d(0, -100px, 0)
+            }
+            & when(@type='slideLeft') {
+                transform: translate3d(-150px, 0, 0)
+            }
+            & when(@type='slideRight') {
+                transform: translate3d(150px, 0, 0)
+            }
+            & when(@type='slideUp') {
+                transform: translate3d(0, 100px, 0);
+            }
+        }
+    }
+    , @leaveframes: {
+        to {
+            & when(@type='slideDown') {
+                transform: translate3d(0, 100px, 0)
+            }
+            & when(@type='slideLeft') {
+                transform: translate3d(150px, 0, 0)
+            }
+            & when(@type='slideRight') {
+                transform: translate3d(-150px, 0, 0)
+            }
+            & when(@type='slideUp') {
+                transform: translate3d(0, -100px, 0);
+            }
+        }
+    }
+    );
+}
+
+;
+.slide(@type: 'slideDown');
+.slide(@type: 'slideRight');
+.slide(@type: 'slideLeft');
+
+/* -- flip -- */
+.animation(@type: 'flip', @enterstyle: 'both ease-in', @leavestyle: 'both ease-in', @enterframes: {
+    @percent: '70%';
+    from {
+        transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
+    }
+    @{percent} {
+        transform: perspective(400px) rotate3d(1, 0, 0, -15deg);
+    }
+    to {
+        transform: perspective(400px);
+    }
+}
+, @leaveframes: {
+    @percent: '30%';
+    from {
+        transform: perspective(400px);
+    }
+    @{percent} {
+        transform: perspective(400px) rotate3d(1, 0, 0, -15deg);
+    }
+    to {
+        transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
+    }
+}
+);
+/* -- rotate -- */
+.animation(@type: 'rotate', @enterstyle: 'both', @leavestyle: 'both', @enterframes: {
+    from {
+        transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
+    }
+}
+, @leaveframes: {
+    to {
+        transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
+    }
+});
+
+/* -- door -- */
+.animation(@type: 'rotate', @enterstyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @leavestyle: 'both', @enterframes: {
+    from {
+        transform: scale3d(0, 1, 1);
+    }
+}, @leaveframes: {
+    @percent: '30%';
+    @{percent} {
+        transform: scale3d(.01, 1, 1);
+    }
+    to {
+        transform: scale3d(0, 1, .1);
+    }
+});
