@@ -6,15 +6,18 @@ const propTypes = {
 const defaultProps = {
     prefixCls: _PRE_ + '-modal'
 }
-class Dialog extends Component {
-    render() {
-        const { prefixCls, children, animationType, animation, showCloseButton, width, height, measure, duration, customStyles, onClose } = this.props;
+const Dialog = props =>  {
+        const { prefixCls, children,className, animationType, animation, showCloseButton,
+              width, height, measure, duration, customStyles, onClose } = props;
+              console.log(duration);
         const CloseButton = showCloseButton ? <span className={`${prefixCls}-close`} onClick={onClose} /> : null;
         const classNames = classnames(
             prefixCls,
-            {
-                [`prefixCls-${animation}-${animationType}`]: animation && animationType
-            }
+            `${prefixCls}-dialog`,
+            {  
+                [`${prefixCls}-${animation}-${animationType}`]: animation && animationType
+            },
+            className
         );
         const style = {
             width: width + measure,
@@ -29,7 +32,6 @@ class Dialog extends Component {
                 {children}
             </div>
         )
-    }
 }
 Dialog.defaultProps = defaultProps;
 Dialog.propTypes = propTypes;

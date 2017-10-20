@@ -8,20 +8,43 @@
     height: 100%;
     z-index: 100;
 }
-
 .@{modal-prefix-cls} {
     position: fixed;
+    .header{
+      font-size: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e9e9e9;
+    }
+    .body{
+        padding-top: 15px;
+    }
+    .cancel-btn,.confirm-btn{
+        position: absolute;
+        font: inherit;
+        bottom: 16px;
+        width: 70px;
+        padding: 4px 15px;
+        border-radius: 3px;
+        transition: background .2s;
+        border: 1px solid #03a9f4;
+    }
+    .confirm-btn{
+            color: #fff;
+            right: 102px;
+            background: #03a9f4;
+    }
+    .cancel-btn {
+    color: #03a9f4;
+    right: 16px;
+    background: #fff;
 }
-
-
+}
 /* -- mask -- */
 
 .@{modal-prefix-cls}-mask {
     position: absolute;
     background: rgba(0, 0, 0, .3);
 }
-
-
 /* -- dialog -- */
 
 .@{modal-prefix-cls}-dialog {
@@ -37,19 +60,16 @@
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
 }
-
-
 /* -- close button -- */
 
 .@{modal-prefix-cls}-close {
     position: absolute;
     cursor: pointer;
-    top: 16px;
-    right: 16px;
-    width: 16px;
-    height: 16px;
+    top: 14px;
+    right: 14px;
+    width: 14px;
+    height: 14px;
 }
-
 .@{modal-prefix-cls}-close:before,
 .@{modal-prefix-cls}-close:after {
     position: absolute;
@@ -60,7 +80,7 @@
     left: 0;
     margin-top: -1px;
     background: #999;
-    border-radius: 100%;
+    border-radius: 30%;
     transition: background .2s;
 }
 
@@ -76,12 +96,11 @@
 .@{modal-prefix-cls}-close:hover:after {
     background: #333;
 }
-
-
 .animation(@type, @enterstyle,@leavestyle,@enterframes, @leaveframes) {
-    @animate: ~".@{modal-prefix-cls}-@{type}";
+    @animcls: ~".@{modal-prefix-cls}-@{type}";
+    @animate: ~"@{modal-prefix-cls}-@{type}";
     @keyf: ~"@{modal-prefix-cls}-@{type}";
-    @{animate}-enter {
+    @{animcls}-enter {
         animation: ~"@{animate}-enter" @enterstyle;
         & when (@type ='flip') {
             backface-visibility: visible;
@@ -90,7 +109,7 @@
             transform-origin: center;
         }
     }
-    @{animate}-leave {
+    @{animcls}-leave {
         animation: ~"@{animate}-leave" @leavestyle;
         & when (@type ='flip') {
             backface-visibility: visible;
@@ -108,7 +127,7 @@
 }
 /* -- fade -- */
 
-.animation(@type: 'fade', @enterstyle: 'both ease-in', @leavestyle: 'both ease-in', @enterframes: {
+.animation(@type: 'fade', @enterstyle: both ease-in, @leavestyle: both ease-in, @enterframes: {
 
     from {
         opacity: 0;
@@ -120,7 +139,7 @@
 });
 /* -- zoom -- */
 
-.animation(@type: 'fade', @enterstyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @leavestyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @enterframes: {
+.animation(@type: 'zoom', @enterstyle: both cubic-bezier(0.4, 0, 0, 1.5), @leavestyle: both , @enterframes: {
     from {
         transform: scale3d(.3, .3, .3);
     }
@@ -130,13 +149,12 @@
         transform: scale3d(.3, .3, .3);
     }
 }
-
 );
 
 /* -- slide -- */
 
 .slide(@type: 'slideUp') {
-    .animation(@type, @enterstyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @leavestyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @enterframes: {
+    .animation(@type, @enterstyle: both cubic-bezier(0.4, 0, 0, 1.5), @leavestyle: both cubic-bezier(0.4, 0, 0, 1.5), @enterframes: {
         from {
             & when(@type='slideDown') {
                 transform: translate3d(0, -100px, 0)
@@ -169,15 +187,13 @@
         }
     }
     );
-}
-
-;
+};
 .slide(@type: 'slideDown');
 .slide(@type: 'slideRight');
 .slide(@type: 'slideLeft');
 
 /* -- flip -- */
-.animation(@type: 'flip', @enterstyle: 'both ease-in', @leavestyle: 'both ease-in', @enterframes: {
+.animation(@type: 'flip', @enterstyle: both ease-in, @leavestyle: both ease-in, @enterframes: {
     @percent: '70%';
     from {
         transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
@@ -203,7 +219,7 @@
 }
 );
 /* -- rotate -- */
-.animation(@type: 'rotate', @enterstyle: 'both', @leavestyle: 'both', @enterframes: {
+.animation(@type: 'rotate', @enterstyle: both, @leavestyle: both, @enterframes: {
     from {
         transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
     }
@@ -215,7 +231,7 @@
 });
 
 /* -- door -- */
-.animation(@type: 'rotate', @enterstyle: 'both cubic-bezier(0.4, 0, 0, 1.5)', @leavestyle: 'both', @enterframes: {
+.animation(@type: 'rotate', @enterstyle: both cubic-bezier(0.4, 0, 0, 1.5), @leavestyle: both, @enterframes: {
     from {
         transform: scale3d(0, 1, 1);
     }
