@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import Dialog from './Dialog'
+import {Dialog,ModalBody,ModalFooter,ModalHeader} from './Dialog'
 import classnames from 'classnames';
 import './index.less';
 // env
+
 const inBrowser = typeof window !== 'undefined';
 class Modal extends Component {
     static propTypes = {
@@ -33,14 +34,11 @@ class Modal extends Component {
         measure: 'px',
         visible: false,
         showMask: true,
-        closeOnEsc: false,
+        closeOnEsc: true,
         closeMaskOnClick: true,
         showCloseButton: true,
         animation: 'zoom',
-        enterAnimation: '',
-        leaveAnimation: '',
-        duration: 500,
-        className: '',
+        duration: 200,
         customStyles: {},
         customMaskStyles: {},
     };
@@ -84,13 +82,13 @@ class Modal extends Component {
         );
     }
 
-    onKeyUp = event => {
-        if (this.props.closeOnEsc && event.keyCode === 27) {
-            this.props.onClose();
+    onKeyUp = e => {
+        const {closeOnEsc,onClose} = this.props
+        if (closeOnEsc && e.keyCode === 27) {
+            onClose();
         }
     }
     render() {
-
         const { prefixCls, className, children, closeMaskOnClick, onClose, showMask, duration, customMaskStyles, ...ohter } = this.props;
         const { animationType, isShow } = this.state;
         const onClick = closeMaskOnClick ? onClose : null;
@@ -127,5 +125,7 @@ class Modal extends Component {
         )
     }
 }
-
+Modal.ModalHeader = ModalHeader;
+Modal.ModalBody = ModalBody;
+Modal.ModalFooter = ModalFooter;
 export default Modal;

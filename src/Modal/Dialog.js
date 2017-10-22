@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Button from '../Button';
 import classnames from 'classnames';
 const propTypes = {
     prefixCls: PropTypes.string
@@ -6,10 +7,30 @@ const propTypes = {
 const defaultProps = {
     prefixCls: _PRE_ + '-modal'
 }
+const ModalHeader = props =>{
+    const{children} = props;
+    return(
+        <div className="header">{children}</div>
+    )
+}
+const ModalBody = props => {
+    const {children} = props;
+    return(
+    <div className="body">{children}</div>
+    )
+}
+const ModalFooter = props => {
+    const {children,onClose} = props;
+    return(
+        <div className="footer">
+        <Button className="confirm-btn" onClick={onClose}>确定</Button>
+        <Button className="cancel-btn" feature='transparent' onClick={onClose}>取消</Button>
+        </div>
+    )
+}
 const Dialog = props =>  {
         const { prefixCls, children,className, animationType, animation, showCloseButton,
               width, height, measure, duration, customStyles, onClose } = props;
-              console.log(duration);
         const CloseButton = showCloseButton ? <span className={`${prefixCls}-close`} onClick={onClose} /> : null;
         const classNames = classnames(
             prefixCls,
@@ -35,4 +56,4 @@ const Dialog = props =>  {
 }
 Dialog.defaultProps = defaultProps;
 Dialog.propTypes = propTypes;
-export default Dialog;
+export {Dialog,ModalHeader,ModalBody,ModalFooter};
