@@ -26,7 +26,6 @@ class Confirm extends Component {
   }
 
   render() {
-    debugger
     const {title, content, operation, okText, cancelText } = this.props;
         return (
             <Modal className="bfd-confirm" visible={this.state.open} onClose = {this.close}>

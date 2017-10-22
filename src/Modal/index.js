@@ -98,7 +98,7 @@ class Modal extends Component {
                 [`${prefixCls}-fade-${animationType}`]: animationType
             },
             className
-        )
+        ) 
         const mask = showMask ? <div className={`${prefixCls}-mask`} style={customMaskStyles} onClick={onClick} /> : null;
         const style = {
             display: isShow ? '' : 'none',
