@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import {Dialog,ModalBody,ModalFooter,ModalHeader} from './Dialog'
 import classnames from 'classnames';
 import './index.less';
-// env
 
-const inBrowser = typeof window !== 'undefined';
 class Modal extends Component {
-    static propTypes = {
+     static propTypes = {
         prefixCls: PropTypes.string,
         width: PropTypes.number,
         height: PropTypes.number,
@@ -21,12 +20,8 @@ class Modal extends Component {
         leaveAnimation: PropTypes.string,
         duration: PropTypes.number,
         className: PropTypes.string,
-        customStyles: PropTypes.object,
-        customMaskStyles: PropTypes.object,
         onClose: PropTypes.func.isRequired,
-        onAnimationEnd: PropTypes.func
-    };
-
+     }
     static defaultProps = {
         prefixCls: _PRE_ + '-modal',
         width: 400,
@@ -39,93 +34,64 @@ class Modal extends Component {
         showCloseButton: true,
         animation: 'zoom',
         duration: 200,
-        customStyles: {},
-        customMaskStyles: {},
     };
-
     state = {
-        isShow: false,
-        animationType: 'leave'
+        animationType: 'enter'
     };
-
-    componentDidMount() {
-        if (this.props.visible) {
-            this.enter();
-        }
-    }
-
     componentWillReceiveProps(nextProps) {
         if (!this.props.visible && nextProps.visible) {
-            this.enter();
+            this.open();
         } else if (this.props.visible && !nextProps.visible) {
-            this.leave();
+            this.close();
         }
     }
-
-    enter() {
-        this.setState({
-            isShow: true,
+    open() {
+         this.setState({
             animationType: 'enter'
-        });
+        }) 
+        this.insertDiv()
     }
-
-    leave() {
-        const { duration } = this.props;
-        this.setState({
-            animationType: 'leave'     
-        }, () => {
-            setTimeout(
-                () => this.setState({
-                    isShow: false
-                }), duration)
-        }
-        );
+    close() {
+        // this.replaceAnimate();
+        this.removeInsert();
     }
-
+    // replaceAnimate(){
+    //     const {prefixCls} = this.props;
+    //     const cls = `.${prefixCls}-fade-enter`
+    //     console.log(cls)
+    //     let node = document.getElementById(this.mid).firstChild;
+    //     node.setAttribute('class',node.getAttribute('class').replace('enter','leave'));
+    //     node.children[1].setAttribute('class',node.children[1].getAttribute('class').replace('enter','leave'));
+    // }
     onKeyUp = e => {
         const {closeOnEsc,onClose} = this.props
         if (closeOnEsc && e.keyCode === 27) {
-            onClose();
+            this.removeInsert();
         }
     }
-    render() {
-        const { prefixCls, className, children, closeMaskOnClick, onClose, showMask, duration, customMaskStyles, ...ohter } = this.props;
-        const { animationType, isShow } = this.state;
-        const onClick = closeMaskOnClick ? onClose : null;
-        const classNames = classnames(
-            prefixCls,
-            {
-                [`${prefixCls}-fade-${animationType}`]: animationType
-            },
-            className
-        ) 
-        const mask = showMask ? <div className={`${prefixCls}-mask`} style={customMaskStyles} onClick={onClick} /> : null;
-        const style = {
-            display: isShow ? '' : 'none',
-            animationDuration: duration + 'ms',
-            WebkitAnimationDuration: duration + 'ms'
-        };
-        return (
-            <div
-                style={style}
-                className={classNames}
-                tabIndex="-1"
-                ref={el => { this.el = el; }}
-                onKeyUp={this.onKeyUp}
-            >
-                {mask}
-                <Dialog
-                    {...ohter}
-                    duration={duration}
-                    onClose={onClose}
-                    animationType={animationType}>
-                    {children}
-                </Dialog>
-            </div>
-        )
+   insertDiv(){
+          if(!this.containerNode){
+            this.mid = '_modal_'+ + new Date();
+            this.containerNode = document.createElement('div');
+            this.containerNode.setAttribute('id',this.mid);
+            document.body.appendChild(this.containerNode);
+        }
+        const {...props} = this.props;
+        const {animationType} = this.state;
+        ReactDOM.render(
+            <Dialog {...props} animationType ={animationType} />,this.containerNode)
+    }
+    removeInsert(){
+               ReactDOM.unmountComponentAtNode(this.containerNode);
+               document.body.removeChild(document.getElementById(this.mid))
+               delete this.containerNode;
+    }
+    render() { 
+       return null
     }
 }
 Modal.ModalHeader = ModalHeader;
 Modal.ModalBody = ModalBody;
 Modal.ModalFooter = ModalFooter;
 export default Modal;
+      

@@ -28,11 +28,22 @@ const ModalFooter = props => {
         </div>
     )
 }
-const Dialog = props =>  {
-        const { prefixCls, children,className, animationType, animation, showCloseButton,
-              width, height, measure, duration, customStyles, onClose } = props;
+class Dialog extends Component{
+  render(){
+      console.log(this)
+    const { prefixCls, className, children, closeMaskOnClick,showCloseButton, animation,
+        width,height,measure,customStyles,animationType,
+        onClose, showMask, duration, customMaskStyles, ...ohter } = this.props;
+        const onClick = closeMaskOnClick ? onClose : null;
         const CloseButton = showCloseButton ? <span className={`${prefixCls}-close`} onClick={onClose} /> : null;
         const classNames = classnames(
+            prefixCls,
+            {
+                [`${prefixCls}-fade-${animationType}`]: animationType
+            },
+            className
+        ) 
+        const childCls = classnames(
             prefixCls,
             `${prefixCls}-dialog`,
             {  
@@ -40,20 +51,34 @@ const Dialog = props =>  {
             },
             className
         );
+        const mask = showMask ? <div className={`${prefixCls}-mask`} style={customMaskStyles} onClick={onClick} /> : null;
         const style = {
+            animationDuration: duration + 'ms',
+            WebkitAnimationDuration: duration + 'ms'
+        };
+        const childStyle = {
             width: width + measure,
             height: height + measure,
             animationDuration: duration + 'ms',
             WebkitAnimationDuration: duration + 'ms'
         };
-        const mergedStyles = { ...style, ...customStyles };
-        return (
-            <div style={mergedStyles} className={classNames}>
+        const mergedStyles = { ...childStyle, ...customStyles };
+        return(
+           <div
+                className={classNames}
+                ref={el => { this.el = el; }}
+                onKeyUp={this.onKeyUp}
+            >
+                {mask}
+                <div style={mergedStyles} className={childCls}>
                 {CloseButton}
                 {children}
             </div>
+            </div>
         )
-}
+                
+      }
+  }
 Dialog.defaultProps = defaultProps;
 Dialog.propTypes = propTypes;
 export {Dialog,ModalHeader,ModalBody,ModalFooter};
