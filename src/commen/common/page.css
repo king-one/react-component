@@ -1,0 +1,77 @@
+/*
+html{
+    overflow: hidden;
+}
+.pager {
+    float: right;
+}
+.pager > li > a:hover,
+.pager > li > span:hover,
+.pager > li > a:focus,
+.pager > li > span:focus {
+    color: #333;
+    background-color: transparent;
+}
+
+.pager > li > a,
+.pager > li > span {
+    color: #333;
+    border: none;
+    padding: 0px 6px;
+    margin-left: 0;
+}
+
+.pager > li.disabled > span,
+.pager > li.disabled > span:hover,
+.pager > li.disabled > span:focus,
+.pager > li.disabled > a,
+.pager > li.disabled > a:hover,
+.pager > li.disabled > a:focus {
+    border: none;
+    background-color: transparent;
+}
+
+.pager > li.pager-first a,
+.pager > li.pager-last a {
+    border: 1px solid #0094DE;
+    background-color: #0094de;
+    color: #fff;
+    border-radius: 15px;
+    width: 60px;
+    text-align: center;
+}*/
+.pager {
+    float: right;
+}
+.pager > li > a{
+    color: #337ab7;
+    margin-left: -1px;
+    border: 1px solid #ddd;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+}
+.pager .pager-first,.pager .previous,.pager .next{
+    display: none;
+}
+.explain span{
+    margin-left: 5px!important;
+    background: none;
+    border: none!important;
+}
+.explain span:hover{
+    background: none!important;
+}
+.pager>*:nth-child(3) a{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.pager>*:nth-last-child(3) a{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.pager li.active a{
+    color: #23527c;
+    border-color: #ddd;
+    background-color: #eee;
+}

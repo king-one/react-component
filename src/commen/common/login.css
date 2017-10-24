@@ -1,0 +1,325 @@
+/*reset*/
+body {
+    font-family: "微软雅黑";
+    
+    width:100%;
+    height:100%;
+}
+html{
+	width:100%;
+	height:100%;
+}
+.login-wrapper{
+	width:100%;
+	height:960px;
+	background:url(../../images/register/wetoo_web_sign-up_bg.jpg) no-repeat;
+	float:left;
+}
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+	}
+.login-container{
+    width:460px;
+    height:599px;
+    background-color:rgba(27,43,66,0.4);
+    margin:110px auto 0;
+    padding:60px 40px 0;
+}
+legend{
+    border:0;
+    margin-bottom:30px;
+}
+legend>img{
+    width:160px;
+    height:60px;
+    margin:0 auto;
+}
+legend>div{
+    margin-top:15px;
+    text-align:center;
+}
+legend .tips{
+    font-size: 15px;
+    color:#06e6e6;
+}
+legend .tips>a{
+    text-decoration: underline;
+    color:#06e6e6;
+}
+.phone{
+    border-radius:24px;
+    width:380px;
+    background:#fff;
+    height:46px;
+    float:left;
+    margin-bottom:20px;
+    border:1px solid transparent;
+}
+.phone>img{
+    margin:11px 10px 0 29px;
+    float:left;
+    font-size:20px;
+}
+.phone>input{
+    float:left;
+    width:180px;
+    height:44px;
+    border:0;
+    outline:medium;
+}
+.phone>.tips{
+    width:120px;
+    float:left;
+    height:48px;
+    font-size:12px;
+    line-height:48px;
+    color:#ff5050;
+    margin-left:10px;
+    visibility: hidden;
+}
+.checkCode{
+    width:380px;
+    background:#fff;
+    height:46px;
+    float:left;
+    border-radius:24px;
+    border:1px solid transparent;
+    position:relative;
+}
+.checkImg{
+    margin:11px 10px 0 29px;
+    float:left;
+}
+.checkCode>input{
+    float:left;
+    width:228px;
+    height:44px;
+    border:0;
+    outline:medium;
+}
+.checkCode>.tips{
+	position:absolute;
+    width:115px;
+    float:left;
+    height:24px;
+    font-size:12px;
+    line-height:24px;
+    color:#ff5050;
+    margin-left:10px;
+    padding-right:5px;
+    border-right:1px solid #e5e5e5;
+    margin-top:12px;
+    left:160px;
+    top:0;
+    visibility: hidden;
+}
+.checkCodeImg{
+    float:left;
+    margin-right:0;
+    margin-left:10px;
+    width:60px;
+    height:44px;
+}
+.pwd{
+    border-radius:24px;
+    width:380px;
+    background:#fff;
+    height:46px;
+    float:left;
+    margin-bottom:20px;
+    border:1px solid transparent;
+}
+.pwd>img{
+    margin:11px 10px 0 29px;
+    float:left;
+    font-size:20px;
+}
+.pwd>input{
+    float:left;
+    width:180px;
+    height:44px;
+    border:0;
+    outline:medium;
+}
+.pwd>.tips{
+    width:115px;
+    float:left;
+    height:48px;
+    font-size:12px;
+    line-height:48px;
+    color:#ff5050;
+    margin-left:10px;
+    visibility: hidden;
+}
+.remember{
+    width:380px;
+    height:14px;
+    float:left;
+    margin-bottom:0;
+    margin-top:20px;
+}
+.remember input{
+    margin:0;
+    background:transparent;
+    border:1px solid #fff;
+    margin-left:10px;
+    margin-right:10px;
+}
+.remember label span{
+    margin-bottom:0;
+    font-size:12px;
+    color:#fff;
+    float:left;
+}
+.remember>span{
+    float:right;
+    cursor: pointer;
+}
+.btn{
+    margin-top:44px;
+    width:200px;
+    height:48px;
+    border-radius: 24px;
+    background:transparent;
+    border:1px solid #0094de;
+    color:#0094de;
+    font-size:16px;
+    margin-left:90px;
+    text-shadow:0 10px 0 transparent;
+    padding:0;
+    text-align:center;
+    line-height:48px;
+    position:relative;
+}
+ .btn:hover{
+	background:transparent;
+	border:1px solid #0094de;
+	color:#3D4F58;
+}
+.btn-login{
+	border-radius: 24px;
+	height:48px;
+	background:#0b9de5;
+	border:0;
+	color:#fff;	
+	width:200px;
+	transition:all 0.5s;
+}
+.btn-wrapper{
+	width:0px;
+	height:48px;
+	position:absolute;
+	left:0;
+	top:0;
+	overflow:hidden;
+	transition:all 0.5s;
+}
+.btn:hover .btn-wrapper{
+	width:200px;
+}
+.btn:hover .btn-login{
+	background:#0170cc;
+}
+.wechat{
+	cursor:pointer;
+}
+input:focus { 
+	outline: none; 
+}
+.forget-pwd{
+	color:#fff;
+	float:right;
+}
+.forget-pwd:hover{
+	color:#fff;
+}
+.link{
+    margin-top:70px;
+    float:left;
+    margin-left:110px;
+    position:relative;
+}
+.link a{
+    color:#fff;
+    font-size:12px;
+}
+.link a:nth-of-type(1){
+    padding-right:14px;
+    color:#0094de;
+    font-size:12px;
+    margin-left:4px;
+    /*border-right:1px solid #fff;*/
+}
+
+.login-norlink span{
+	color:#fff;
+	font-size:12px;
+	margin-left:14px;
+}
+.link a:nth-of-type(2){
+    margin-left:14px;
+}
+.vanish{
+    display:none!important;
+}
+.arise{
+    display:block!important;
+}
+.sign{
+    color:#fff;
+    width:380px;
+    height:293px;
+    padding-left:35px;
+    position: relative;
+    overflow: hidden;
+}
+.sign h2{
+    margin-bottom:20px;
+    text-align:center;
+}
+.sign img{
+    width:200px;
+    height:200px;
+    margin-left:90px;
+}
+.sign p:nth-of-type(1){
+    text-align:center;
+    margin-top:10px;
+}
+.sign p:nth-of-type(2){
+    text-align:center;
+    margin-top:10px;
+}
+.login-normal{
+    width:380px;
+    height:312px;
+}
+.return{
+    color:#fff;
+    font-size:16px;
+    width:160px;
+    text-align:center;
+    cursor: pointer;
+}
+#login_container{
+	position: absolute;
+	top: -47px;
+	left:45px;
+}
+.wei-title{
+	margin-bottom:20px;
+	color:#fff;
+	text-align:center;
+	font-weight: 100;
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.open,
+.dropdown-toggle.btn{
+    background: transparent;
+    /*border: 1px solid #0094de;*/
+    color: #0094de;
+    text-shadow: 0 10px 0 transparent;
+}

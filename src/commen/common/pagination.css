@@ -1,0 +1,94 @@
+.wt-pagination {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.wt-pagination .wt-pagination-pages ul {
+    list-style: none;
+}
+.wt-pagination .wt-pagination-pages ul li {
+    color: #337ab7;
+    margin-left: -1px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    min-width: 36px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.wt-pagination .wt-pagination-pages ul li:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.wt-pagination .wt-pagination-pages ul li:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.wt-pagination .wt-pagination-pages ul li:hover {
+    background-color: #eee;
+}
+
+.wt-pagination .wt-pagination-pages ul li.wt-pagination-current, .wt-pagination .wt-pagination-pages ul li.wt-pagination-dot {
+    cursor: default;
+}
+
+.wt-pagination .wt-pagination-pages ul li.wt-pagination-dot:hover {
+    background-color: inherit;
+}
+
+.wt-pagination .wt-pagination-pages .wt-pagination-current {
+    color: #23527c;
+    border-color: #ddd;
+    background-color: #eee;
+}
+
+.wt-pagination .wt-pagination-pages, .wt-pagination .wt-pagination-go, .wt-pagination .ms-paginatioin-btn, .wt-pagination .wt-pagination-go-wrap {
+    display: inline-block;
+}
+
+.wt-pagination .wt-pagination-go {
+    margin-left: 20px;
+}
+
+.wt-pagination .wt-pagination-go input {
+    width: 36px;
+    height: 34px;
+    border: 1px solid #aaa;
+    padding: 0;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.wt-pagination .ms-paginatioin-btn {
+    margin-left: 20px;
+}
+
+.wt-pagination .ms-paginatioin-btn button {
+    padding: 0;
+    width: 50px;
+    height: 34px;
+    outline: none;
+    cursor: pointer;
+    line-height: 34px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #aaa;
+    background-color: transparent;
+}
+
+.wt-pagination .ms-paginatioin-btn button:hover {
+    background-color: #eee;
+}
+
+.wt-pagination .wt-pagination-disabled {
+    opacity: 0.3;
+}
+
+.wt-pagination .wt-pagination-disabled:hover {
+    background-color: transparent !important;
+}

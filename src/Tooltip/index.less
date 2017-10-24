@@ -1,0 +1,39 @@
+/*
+ * @Author: chen gong 
+ * @Date: 2017-10-24 15:47:47 
+ * @Last Modified by: chen gong
+ * @Last Modified time: 2017-10-24 17:04:43
+ */
+
+@import '../variables.less';
+
+@tooltip-prefix-cls: ~'@{sw-prefix}-tooltip';
+@popover-prefix-cls: ~'@{sw-prefix}-popover';
+.@{tooltip-prefix-cls}-popover {
+    white-space: pre-wrap;
+    font-size: 12px;
+    > .@{popover-prefix-cls}-content {
+        background-color: @theme-stroke-1;
+        color: #fff;
+    }
+    &.@{popover-prefix-cls}-up {
+        &:after {
+            border-top-color: @theme-stroke-1;
+        }
+    }
+    &.@{popover-prefix-cls}-down {
+        &:after {
+            border-bottom-color: @theme-stroke-1;
+        }
+    }
+    &.@{popover-prefix-cls}-left {
+        &:after {
+            border-left-color: @theme-stroke-1;
+        }
+    }
+     &.@{popover-prefix-cls}-right {
+        &:after {
+            border-right-color: @theme-stroke-1;
+        }
+    }
+}

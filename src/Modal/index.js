@@ -39,9 +39,9 @@ class Modal extends Component {
         animationType: 'enter'
     };
     componentWillReceiveProps(nextProps) {
-        if (!this.props.visible && nextProps.visible) {
+        if (nextProps.visible) {
             this.open();
-        } else if (this.props.visible && !nextProps.visible) {
+        } else{
             this.close();
         }
     }

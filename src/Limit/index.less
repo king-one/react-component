@@ -1,0 +1,17 @@
+/*
+ * @Author: chen gong 
+ * @Date: 2017-10-24 17:36:30 
+ * @Last Modified by: chen gong
+ * @Last Modified time: 2017-10-24 17:44:52
+ */
+ @import '../variables.less';
+ @limit-prefix:~'@{sw-prefix}-text-overflow';
+ @popover-prefix:~'@{sw-prefix}-popover';
+ .@{limit-prefix}{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+.@{popover-prefix}-content{
+        font-size: 12px;
+  }

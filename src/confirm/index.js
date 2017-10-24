@@ -9,8 +9,7 @@ class Confirm extends Component {
         open:true
     }
   handleConfirm = () => {
-      const {conConfirm} = this.porps;
-      onConfirm && onConfirm()
+      this.props.onConfirm && this.props.onConfirm()
       this.close()
   }
   open = () => {
@@ -29,10 +28,10 @@ class Confirm extends Component {
     const {title, content, operation, okText, cancelText } = this.props;
         return (
             <Modal className="bfd-confirm" visible={this.state.open} onClose = {this.close}>
-             <Modal.ModalHeader>modal</Modal.ModalHeader>
-             <Modal.ModalBody>这是一个modal组件</Modal.ModalBody>
+             <Modal.ModalHeader>{title}</Modal.ModalHeader>
+             <Modal.ModalBody>{content}</Modal.ModalBody>
                   {operation ? operation : (
-                    <div>
+                    <div className="footer">
                       <Button onClick={this.handleConfirm}>{okText}</Button>
                       <Button feature="transparent" onClick={this.close}>{cancelText}</Button>
                     </div>
@@ -82,7 +81,6 @@ Confirm.propTypes = {
 
 let instance, container
 function confirm(content, onConfirm) {
-  debugger
   let props
   if (isPlainObject(content) && !React.isValidElement(content)) {
     props = content

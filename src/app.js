@@ -6,6 +6,10 @@ import { Col, Row } from './Layout';
 import Menu from './Menu';
 import Modal from './Modal';
 import confirm from './confirm';
+import Input from './Input';
+import Icon from './Icon';
+import Tooltip from './Tooltip';
+import Limit from './Limit';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 class Root extends Component {
@@ -123,14 +127,30 @@ class Root extends Component {
                         <Modal.ModalFooter onClose={this.hide}></Modal.ModalFooter>
                     </Modal>
                 </div>
-                <br/>
+                <br />
                 <div>
                     <Button onClick={() => {
                         confirm('确认删除吗', () => {
                             console.log('confirmed')
                         })
                     }}>删除确认</Button>
-            </div>
+                </div>
+                <br />
+                <div>
+                    <Input placeholder={'123456'} ref='inp'
+                        onChange={(e) => console.log(this.refs.inp.input.value)}
+                        onPressEnter={e => console.log('enter')}
+                    />
+                </div>
+                <div>
+
+                    <Tooltip title="这是一个tooltip 这是一个tooltip 这是一个tooltip 这是一个tooltip">
+                        <span>333333333333333333333333333<Icon type="circle" /></span>
+                    </Tooltip>
+                    <Limit>
+                      <p style={{ width: '100px',marginLeft:'100px' }}>我是很长的一段文字，鼠标滑过可显示全部</p>
+                    </Limit>
+                </div>
             </div>
 
         )

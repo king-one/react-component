@@ -1,0 +1,248 @@
+/*reset*/
+body,html{
+    overflow-x: hidden;
+}
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img div{
+    margin:0;
+    padding:0;
+}
+fieldset, img {
+    border:0;
+}
+img{
+    display: block;
+}
+ul, ol,li {
+    list-style:none;
+}
+a:link{
+	text-decoration: none;
+}
+/*nav*/
+#navBv{
+	width:100%;
+	height:68px;
+	background:#1a232f;
+    position:relative;
+    z-index:1009;
+}
+.title{
+    float:left;
+    margin-left:39px;
+}
+.title img{
+    float:left;
+    margin-top:17px;
+}
+.title h1{
+    margin-left:9px;
+    float:left;
+    height:68px;
+    line-height:68px;
+    color:#fff;
+}
+.listTitle{
+    float:left;
+    margin-left:60px;
+    height:68px;
+    line-height:68px;
+    font-size:14px;
+}
+.listTitle li{
+    float:left;
+    width:70px;
+    height:68px;
+    /*margin-right:70px;*/
+}
+.listTitle li>a{
+    color:#fff;
+    font-size:14px;
+    width:70px;
+    height:68px;
+    text-align:center;
+    line-height:68px;
+    display:block;
+}
+
+.case {
+    width: 80px !important;
+    margin-left: 10px !important;
+}
+
+.case > a {
+    width: 100% !important;
+}
+
+.case li,
+.user li {
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+.case,.user{
+    position: relative;
+}
+.case li > a,
+.user li > a {
+    display: block !important;
+    color: #353535 !important;
+    line-height: 1.53846154 !important;
+    width: 100% !important;
+    height: auto !important;
+    cursor: pointer;
+    text-align: center !important;
+}
+.hide-item{
+    position: absolute;
+    width: 120px;
+    top: 68px;
+    left: 50%;
+    margin-left: -60px;
+    height: 0;
+    overflow: hidden;
+    transition: all .5s;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+}
+.case:hover .caret,
+/*.user:hover .caret{*/
+   /*transform: rotate(-180deg);*/
+/*}*/
+.case:hover .hide-item
+{
+    height: 120px;
+    border-radius: 0 0 3px 3px;
+}
+/*.user:hover .hide-item*/
+/*{*/
+    /*height: 60px;*/
+/*}*/
+.case .hide-item li a,
+.user .hide-item li a
+{
+    background: #fff;
+    height: 30px!important;
+    line-height: 30px!important;
+}
+.case .hide-item li:hover a,
+.user .hide-item li:hover a{
+    color: #1A82DD!important;
+}
+/*.case li > a:hover,*/
+/*.user li > a:hover {*/
+    /*color: #fff !important;*/
+/*}*/
+
+.user > a {
+    border: none !important;
+    width: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+
+.loginTitle{
+    float:right;
+    margin-right:40px;
+}
+.loginTitle li{
+    height:68px;
+    line-height:68px;
+    float:left;
+}
+
+.loginTitle > li > a{
+    color:#fff;
+    font-size:14px;   
+    width:45px;
+}
+
+.open{
+	position:relative;
+    z-index: 1000;
+}
+.user{
+    display:inline-block;
+    height:68px;
+    line-height:68px;
+    font-size:14px;
+    color:#fff!important;
+    margin-right:35px;
+}
+.logout{
+    position:absolute;
+    top:68px;
+    left:-41px;
+    width:180px;
+    background:#1b2b42;
+    margin:0;
+    padding:0;
+    text-align:center;
+    width:180px!important;
+    height:110px!important;
+}
+.logout a{
+    border-right:0!important;
+     width:180px!important;
+    height:55px!important;
+    line-height:55px!important;
+    float:left;
+}
+.logout a:hover{
+	color:#9dcefe!important;
+}
+@media (max-width:1200px){
+  html,body{
+      width:1200px;
+  }
+}
+.listTitle li:nth-of-type(2){
+	position:relative;
+}
+.data-origin{
+	position:absolute;
+	left:-20px;
+	top:68px;
+	background:#1b2b42;
+	width:180px;
+	height:98px;
+	margin:0!important;
+}
+.data-origin a{
+	float:left;
+	margin:0!important;
+	display:inline-block;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	text-indent: 20px;
+	color:#fff;
+}
+.nav-active>a{
+	color:#9dcefe!important;
+}
+a:hover{
+	text-decoration: none;
+}
+
+@media only screen and (max-width:1200px ){
+	body,html{
+		min-width:1200px;
+	}	
+}
+.qqinit{
+    display: none;
+}
+.qq{
+    position: absolute;
+    right: 20px;
+    bottom: 50px;
+    width: 100px;
+    border:#999 solid 1px;
+    position: fixed;
+    z-index: 10;
+    display: block;
+}
+.qq:hover{
+    width: 200px;
+    cursor: pointer;
+}

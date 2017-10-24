@@ -1,0 +1,136 @@
+/*
+ * @Author: chen gong 
+ * @Date: 2017-10-24 15:40:05 
+ * @Last Modified by: chen gong
+ * @Last Modified time: 2017-10-24 17:09:20
+ */
+ @import '../variables.less';
+@popover-prefix-cls:~'@{sw-prefix}-popover';
+@padding: 7px;
+@arrowRelative: 20px + @padding;
+
+.@{popover-prefix-cls}__trigger {
+  cursor: pointer;
+  user-select: none;
+}
+
+.@{popover-prefix-cls}__trigger-disabled,
+.@{popover-prefix-cls}__trigger-disabled * {
+  background-color: #eceff1!important;
+  border-color: #eaeaea!important;
+  cursor: not-allowed!important;
+  color: #999!important;
+  user-select: none;
+}
+
+.@{popover-prefix-cls} {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+}
+
+.@{popover-prefix-cls}--animation {
+  animation: @popover-prefix-cls .15s;
+}
+
+@keyframes ~'@{popover-prefix-cls}'{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.@{popover-prefix-cls}-up {
+  padding-bottom: @padding;
+  margin-top: -@padding;
+  &:after {
+    left: 50%;
+    bottom: 1px;
+    margin-left: -@padding;
+    border-left: @padding solid transparent;
+    border-right: @padding solid transparent;
+    border-top: @padding - 1px solid #fff;
+  }
+}
+
+.@{popover-prefix-cls}-down {
+  padding-top: @padding;
+  &:after {
+    left: 50%;
+    top: 1px;
+    margin-left: -@padding;
+    border-left: @padding solid transparent;
+    border-right: @padding solid transparent;
+    border-bottom: @padding - 1px solid #fff;
+  }
+}
+
+.@{popover-prefix-cls}-left {
+  padding-right: @padding;
+  &:after {
+    top: 50%;
+    right: 1px;
+    margin-top: -@padding;
+    border-top: @padding solid transparent;
+    border-bottom: @padding solid transparent;
+    border-left: @padding - 1px solid #fff;
+  }
+}
+
+.@{popover-prefix-cls}-right {
+  padding-left: @padding;
+  &:after {
+    top: 50%;
+    left: 1px;
+    margin-top: -@padding;
+    border-top: @padding solid transparent;
+    border-bottom: @padding solid transparent;
+    border-right: @padding - 1px solid #fff;
+  }
+}
+
+.@{popover-prefix-cls}-align-left {
+  &:after {
+    left: @arrowRelative;
+  }
+}
+
+.@{popover-prefix-cls}-align-right {
+  &:after {
+    left: auto;
+    right: @arrowRelative;
+  }
+}
+
+.@{popover-prefix-cls}-align-top {
+  &:after {
+    top: @arrowRelative;
+  }
+}
+
+.@{popover-prefix-cls}-align-bottom {
+  &:after {
+    top: auto;
+    bottom: @arrowRelative;
+  }
+}
+
+.@{popover-prefix-cls}-content {
+  padding: 10px 12px;
+  background: #fff;
+  border-radius: 2px;
+  word-wrap: break-word;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, .25);
+  max-width: 200px;
+  max-height: 300px;
+  overflow: auto;
+}
