@@ -1,5 +1,5 @@
 
-import React, { PropTypes } from 'react'
+import React, {Component,PropTypes} from 'react'
 import classnames from 'classnames'
 import './index.less'
 
@@ -9,14 +9,14 @@ class Checkbox extends Component {
             prefixCls,
             children, className, block, indeterminate, onClick, value, checked, defaultChecked,
             onChange, disabled, ...other
-  } = this.props
+  } = this.props;
 
         const inputProps = { value, checked, defaultChecked, onChange, disabled }
 
-        const classNames = classnames(`${prefixCls}-checkbox`, {
-            ['${prefixCls}-disabled']: inputProps.disabled,
-            ['${prefixCls}-block']: block,
-            ['${prefixCls}-indeterminate']: indeterminate
+        const classNames = classnames(prefixCls, {
+            [`${prefixCls}-disabled`]: inputProps.disabled,
+            [`${prefixCls}-block`]: block,
+            [`${prefixCls}-indeterminate`]: indeterminate
         }, className)
 
         return (
@@ -34,11 +34,11 @@ class Checkbox extends Component {
             >
                 <input
                     type="checkbox"
-                    className="bfd-checkbox__input"
+                    className={`${prefixCls}-input`}
                     {...inputProps}
                 />
-                <span className="bfd-checkbox__status" />
-                {children && <span className="bfd-checkbox__text">{children}</span>}
+                <span className={`${prefixCls}-status`} />
+                {children && <span className={`${prefixCls}-text`}>{children}</span>}
             </label>
         )
     }
@@ -46,6 +46,7 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
+    prefixCls:PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     checked: PropTypes.bool,
     defaultChecked: PropTypes.bool,
@@ -53,5 +54,8 @@ Checkbox.propTypes = {
     indeterminate: PropTypes.bool,
     disabled: PropTypes.bool,
     block: PropTypes.bool,
+}
+Checkbox.defaultProps = {
+    prefixCls:_PRE_+'-checkbox'
 }
 export default Checkbox;

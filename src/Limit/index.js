@@ -23,7 +23,7 @@ class Limit extends Component {
             <Popover
                 className={classnames(`${prefixCls}__popover`, className)}
                 content={children.props.children}
-                shouldOpen={Showtip ? this.computWhith() : false}
+                shouldOpen={true ? () => this.computWhith() : false}
                 {...other}
             >
                 {React.cloneElement(children, {

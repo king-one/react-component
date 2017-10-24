@@ -3,7 +3,6 @@ import { render } from 'react-dom'
 import isPlainObject from 'lodash/isPlainObject'
 import Modal from '../Modal'
 import Button from '../Button'
-import './index.less'
 class Confirm extends Component {
     state ={
         open:true

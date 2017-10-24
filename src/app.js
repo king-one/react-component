@@ -10,6 +10,7 @@ import Input from './Input';
 import Icon from './Icon';
 import Tooltip from './Tooltip';
 import Limit from './Limit';
+import { Checkbox } from './CheckBox';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 class Root extends Component {
@@ -148,11 +149,13 @@ class Root extends Component {
                         <span>333333333333333333333333333<Icon type="circle" /></span>
                     </Tooltip>
                     <Limit>
-                      <p style={{ width: '100px',marginLeft:'100px' }}>我是很长的一段文字，鼠标滑过可显示全部</p>
+                        <p style={{ width: '100px', marginLeft: '100px' }}>我是很长的一段文字，鼠标滑过可显示全部</p>
                     </Limit>
+                    <Checkbox value="apple">苹果</Checkbox>
+                    <Checkbox value="samsung">三星</Checkbox>
+                    <Checkbox value="mi" disabled>小米</Checkbox>
                 </div>
             </div>
-
         )
     }
 }
