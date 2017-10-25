@@ -18,7 +18,8 @@ class Checkbox extends Component {
             [`${prefixCls}-block`]: block,
             [`${prefixCls}-indeterminate`]: indeterminate
         }, className)
-
+        console.log(checked);
+        console.log(this)
         return (
             <label
                 tabIndex={inputProps.disabled ? -1 : 0}
