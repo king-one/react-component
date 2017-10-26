@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-12 14:15:10 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-10-18 11:42:40
+ * @Last Modified time: 2017-10-26 13:35:01
  */
 
 @import '../variables.less';
@@ -72,18 +72,16 @@
 }
 
 .@{btn-prefix-cls}-transparent {
-    border-color: @theme-primary-1;
+    border-color: transparent;
     background-color: transparent;
-    color:  @theme-primary-1;
+    color:  inherit;
     opacity: .7;
     transition: opacity .1s ease;
     &:hover:enabled {
-        color: @theme-primary-2;
         background-color: transparent;
         opacity: .85;
     }
     &:active:enabled {
-        color: @theme-primary-3;
         background-color: transparent;
         opacity: 1;
     }

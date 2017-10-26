@@ -11,6 +11,8 @@ import Icon from './Icon';
 import Tooltip from './Tooltip';
 import Limit from './Limit';
 import { Checkbox } from './CheckBox';
+import SearchInput from './SearchInput';
+
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 class Root extends Component {
@@ -146,7 +148,7 @@ class Root extends Component {
                 <div>
 
                     <Tooltip title="这是一个tooltip 这是一个tooltip 这是一个tooltip 这是一个tooltip">
-                        <span>333333333333333333333333333<Icon type="circle" /></span>
+                        <span>---------------<Icon type="circle" /></span>
                     </Tooltip>
                     <Limit>
                         <p style={{ width: '100px', marginLeft: '100px' }}>我是很长的一段文字，鼠标滑过可显示全部</p>
@@ -154,6 +156,9 @@ class Root extends Component {
                     <Checkbox value="apple">苹果</Checkbox>
                     <Checkbox value="samsung">三星</Checkbox>
                     <Checkbox value="mi" disabled>小米</Checkbox>
+
+                    <SearchInput mode='inner' onSearch={v => console.log(v)} />
+                    <SearchInput block  onSearch={v => console.log(v)} />
                 </div>
             </div>
         )

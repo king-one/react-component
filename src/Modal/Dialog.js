@@ -30,8 +30,7 @@ const ModalFooter = props => {
 }
 class Dialog extends Component{
   render(){
-      console.log(this)
-    const { prefixCls, className, children, closeMaskOnClick,showCloseButton, animation,
+        const { prefixCls, className, children, closeMaskOnClick,showCloseButton, animation,
         width,height,measure,customStyles,animationType,
         onClose, showMask, duration, customMaskStyles, ...ohter } = this.props;
         const onClick = closeMaskOnClick ? onClose : null;

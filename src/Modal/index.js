@@ -39,12 +39,19 @@ class Modal extends Component {
         animationType: 'enter'
     };
     componentWillReceiveProps(nextProps) {
-        if (nextProps.visible) {
+        if (!this.props.visible　&& nextProps.visible) {
             this.open();
-        } else{
+        } 
+        if(this.props.visible && !nextProps.visible){
             this.close();
         }
     }
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.visible === nextProps.visible
+  }
+  componentDidUpdate(){
+         this.insertDiv()
+  }
     open() {
          this.setState({
             animationType: 'enter'
@@ -82,6 +89,7 @@ class Modal extends Component {
             <Dialog {...props} animationType ={animationType} />,this.containerNode)
     }
     removeInsert(){
+              console.log(this.containerNode);
                ReactDOM.unmountComponentAtNode(this.containerNode);
                document.body.removeChild(document.getElementById(this.mid))
                delete this.containerNode;

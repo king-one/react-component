@@ -1,0 +1,31 @@
+@import '../variables.less';
+@search-prefix-cls:~'@{sw-prefix}-search';
+.@{search-prefix-cls}-outer {
+      .@{sw-prefix}-input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: 0;
+  }
+    .@{sw-prefix}-btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+}
+}
+.@{search-prefix-cls}-inner{
+  position: relative;
+  display: inline-block;
+  .@{sw-prefix}-input {
+    padding-right: 25px;
+    width: 100%;
+  }
+  .@{sw-prefix}-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1px;
+}
+}
+.@{search-prefix-cls}-block {
+  display: block;
+}
+
