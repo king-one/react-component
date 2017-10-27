@@ -47,7 +47,11 @@ class Modal extends Component {
         }
     }
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.visible === nextProps.visible
+      if(this.props.visible){
+        return this.props.visible === nextProps.visible
+      }else{
+        return false;
+      }
   }
   componentDidUpdate(){
          this.insertDiv()

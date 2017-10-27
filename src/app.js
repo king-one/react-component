@@ -12,6 +12,7 @@ import Tooltip from './Tooltip';
 import Limit from './Limit';
 import { Checkbox } from './CheckBox';
 import SearchInput from './SearchInput';
+import Switch from './Switch';
 
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
@@ -159,6 +160,8 @@ class Root extends Component {
 
                     <SearchInput mode='inner' onSearch={v => console.log(v)} />
                     <SearchInput block  onSearch={v => console.log(v)} />
+                    <Switch labelOn="打开" labelOff="关闭" />
+                    <Switch labelOn="解锁" labelOff="锁定" iconOn='lock' iconOff='unlock'/>
                 </div>
             </div>
         )

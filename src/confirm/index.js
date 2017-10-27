@@ -3,6 +3,8 @@ import { render } from 'react-dom'
 import isPlainObject from 'lodash/isPlainObject'
 import Modal from '../Modal'
 import Button from '../Button'
+import Icon from '../Icon'
+import  './index.less'
 class Confirm extends Component {
     state ={
         open:true
@@ -24,11 +26,19 @@ class Confirm extends Component {
   }
 
   render() {
-    const {title, content, operation, okText, cancelText } = this.props;
+    const {prefixCls,title, content, operation, okText, cancelText } = this.props;
         return (
-            <Modal className="bfd-confirm" visible={this.state.open} onClose = {this.close}>
-             <Modal.ModalHeader>{title}</Modal.ModalHeader>
-             <Modal.ModalBody>{content}</Modal.ModalBody>
+            <Modal 
+              width={350}
+              height={150}
+              className={prefixCls} 
+              visible={this.state.open} 
+              onClose = {this.close}
+            >
+             <Modal.ModalHeader><Icon type='warning'/>{title}</Modal.ModalHeader>
+             <Modal.ModalBody>
+               {content}
+               </Modal.ModalBody>
                   {operation ? operation : (
                     <div className="footer">
                       <Button onClick={this.handleConfirm}>{okText}</Button>
@@ -42,6 +52,7 @@ class Confirm extends Component {
 
 
 Confirm.defaultProps = {
+  prefixCls:_PRE_ + '-confirm',
   title: '确认提示',
   okText: '确定',
   cancelText: '取消'
@@ -89,15 +100,14 @@ function confirm(content, onConfirm) {
   if (!container) {
     container = document.createElement('div')
   }
-  // Model 会单独创建真实 DOM 容器，所以 Confirm 的容器无需挂在到真实 DOM 中
-  instance = render(<Confirm {...props} />, container)
+  instance = render(<Confirm {...props} />, container) //取决于modal的挂载方式
   instance.open()
 }
 
 /**
  * @public
  * @name confirm.close
- * @description 关闭确认提示
+ * @description 
  */
 confirm.close = () => {
   instance.close()
