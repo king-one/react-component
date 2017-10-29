@@ -13,7 +13,7 @@ import Limit from './Limit';
 import { Checkbox } from './CheckBox';
 import SearchInput from './SearchInput';
 import Switch from './Switch';
-
+import {Messager,Notfify} from './Alert';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 class Root extends Component {
@@ -162,6 +162,12 @@ class Root extends Component {
                     <SearchInput block  onSearch={v => console.log(v)} />
                     <Switch labelOn="打开" labelOff="关闭" />
                     <Switch labelOn="解锁" labelOff="锁定" iconOn='lock' iconOff='unlock'/>
+                </div>
+                <div>
+                    <Button onClick={()=>{
+                         Messager.info({content:'this is info message'});
+                    }}> 全局提示
+                     </Button>
                 </div>
             </div>
         )

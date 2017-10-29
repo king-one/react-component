@@ -1,0 +1,112 @@
+@import '../variables.less';
+@color-notification-error-bg:#f2dede;
+@color-notification-error-font:#a94442;
+@color-notification-success-bg:#dff0d8;
+@color-notification-success-font:#3c763d;
+@color-notification-warning-bg:#fcf8e3;
+@color-notification-warning-font:#a66d3b;
+@color-notification-info-bg:#d9edf7;
+@color-notification-info-font:#31708f;
+@notification-prefix-cls: ~'@{sw-prefix}-notification';
+.@{notification-prefix-cls} {
+    position: fixed;
+    z-index: 9999;
+    &.@{sw-prefix}-messager{
+      left: 50%;
+      .@{notification-prefix-cls}-notice{
+        right: 50%;
+      }
+    }
+    .notify{
+      width: 320px;
+      text-align: left;
+      .title{
+        font-size:  16px;
+      }
+      .description{
+        padding: 5px 0;
+      }
+    }
+    &-notice-wrapper{
+      text-align: center
+    }
+    &-notice {
+      padding: 10px 20px;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
+      background: #fff;
+      display: inline-block;
+      width: auto;
+      line-height: 1.5;
+      position: relative;
+      margin: 5px;
+      &-content{
+        padding: 0 10px 0 5px;
+      }
+  
+      &-closable {
+        padding-right: 20px;
+      }
+  
+      &-close {
+        position: absolute;
+        right: 5px;
+        top: 3px;
+        cursor: pointer;
+        outline: none;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1;
+        text-shadow: 0 1px 0 #fff;
+        filter: alpha(opacity=20);
+        opacity: .2;
+        text-decoration: none;
+  
+        &:after {
+          content: '×';
+        }
+      }
+    }
+      &-info{
+          background-color: @color-notification-info-bg ;
+          .@{notification-prefix-cls}-notice-content{
+            color: @color-notification-info-font ;
+          }
+      }
+  
+  
+      &-error{
+          background-color: @color-notification-error-bg;
+          .@{notification-prefix-cls}-notice-content{
+            color: @color-notification-error-font;
+          }
+      }
+  
+      &-success{
+          background-color: @color-notification-success-bg ;
+          .@{notification-prefix-cls}-notice-content{
+            color: @color-notification-success-font;
+          }
+      }
+  
+      &-warning{
+          background-color: @color-notification-warning-bg;
+          .@{notification-prefix-cls}-notice-content{
+            color: @color-notification-warning-font;
+          }
+      }
+      &-fade-enter{
+        opacity: 0.01
+      }
+      &-fade-enter-active{
+        opacity: 1;
+        transition: opacity 200ms ease-in;
+      }
+      &-fade-leave{
+        opacity: 1;
+      }
+      &-fade-leave-active {
+        opacity: 0.01;
+        transition: opacity 200ms ease-in;
+      }
+  }
+  
