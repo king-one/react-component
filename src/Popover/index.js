@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-24 15:22:51 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-10-24 17:10:20
+ * @Last Modified time: 2017-10-30 20:54:11
  */
 
 
@@ -77,7 +77,7 @@ class Popover extends Component {
    */
   open = () => {
     const { shouldOpen, onToggle } = this.props
-    if (!shouldOpen || shouldOpen()) {
+    if (shouldOpen) {
       this.setState({ open: true })
       onToggle && onToggle(true)
 
@@ -207,7 +207,7 @@ Popover.propTypes = {
   align: PropTypes.oneOf(['top', 'right', 'bottom', 'left', 'middle']),
   open: PropTypes.bool,
   onToggle: PropTypes.func,
-  shouldOpen: PropTypes.func,
+  shouldOpen: PropTypes.bool,
   shouldClose: PropTypes.func,
   disabled: PropTypes.bool,
   aligned: PropTypes.bool

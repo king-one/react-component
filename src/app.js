@@ -13,7 +13,8 @@ import Limit from './Limit';
 import { Checkbox } from './CheckBox';
 import SearchInput from './SearchInput';
 import Switch from './Switch';
-import {Messager,Notfify} from './Alert';
+import { Messager, Notfify } from './Alert';
+import { Option, Select } from './Select';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 class Root extends Component {
@@ -159,15 +160,23 @@ class Root extends Component {
                     <Checkbox value="mi" disabled>小米</Checkbox>
 
                     <SearchInput mode='inner' onSearch={v => console.log(v)} />
-                    <SearchInput block  onSearch={v => console.log(v)} />
+                    <SearchInput block onSearch={v => console.log(v)} />
                     <Switch labelOn="打开" labelOff="关闭" />
-                    <Switch labelOn="解锁" labelOff="锁定" iconOn='lock' iconOff='unlock'/>
+                    <Switch labelOn="解锁" labelOff="锁定" iconOn='lock' iconOff='unlock' />
                 </div>
                 <div>
-                    <Button onClick={()=>{
-                         Messager.info({content:'this is info message'});
+                    <Button onClick={() => {
+                        Messager.info({ content: 'this is info message' });
                     }}> 全局提示
                      </Button>
+
+
+                    <Select>
+                        <Option>请选择</Option>
+                        <Option value="0">苹果</Option>
+                        <Option value="1">三星</Option>
+                        <Option value="2">小米</Option>
+                    </Select>
                 </div>
             </div>
         )
