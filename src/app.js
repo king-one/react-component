@@ -10,18 +10,41 @@ import Input from './Input';
 import Icon from './Icon';
 import Tooltip from './Tooltip';
 import Limit from './Limit';
-import { Checkbox } from './CheckBox';
+import { CheckBox, CheckBoxGroup } from './CheckBox';
 import SearchInput from './SearchInput';
 import Switch from './Switch';
 import { Messager, Notfify } from './Alert';
 import { Option, Select } from './Select';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
+const ITEMS = [1,2,3,4,5]
 class Root extends Component {
     constructor(props) {
         super(props);
-        this.state = { visible: false };
+        this.state = { 
+            visible: false,
+            checkedList: [] 
+    };
     }
+    // checkbox 全选
+  handleCheckedAll = (e) => {
+    this.setState({
+      checkedList: e.target.checked ? ITEMS.slice() : []
+    })
+  }
+
+  handleChange =  (v) => {
+      Array.prototype.remove = function(val) {
+        var index = this.indexOf(val);
+        if (index > -1) {
+        this.splice(index, 1);
+        }
+        };
+    const {checkedList} = this.state;
+    console.log(v);
+    checkedList.indexOf(v) === -1 ? checkedList.push(v) : checkedList.remove(v);
+    this.setState({ checkedList })
+  }
     handleClick() {
         alert(0)
     }
@@ -36,6 +59,9 @@ class Root extends Component {
         this.setState({ visible: false });
     }
     render() {
+            const { checkedList } = this.state
+            const checkedAll = !!checkedList.length && (checkedList.length === ITEMS.length)
+            const indeterminate = !!checkedList.length && (checkedList.length !== ITEMS.length)
         return (
             <div>
                 <div>
@@ -155,10 +181,24 @@ class Root extends Component {
                     <Limit>
                         <p style={{ width: '100px', marginLeft: '100px' }}>我是很长的一段文字，鼠标滑过可显示全部</p>
                     </Limit>
-                    <Checkbox value="apple">苹果</Checkbox>
-                    <Checkbox value="samsung">三星</Checkbox>
-                    <Checkbox value="mi" disabled>小米</Checkbox>
+                    <CheckBox value="apple" onChange={e => console.log(e)}>苹果</CheckBox>
+                    <CheckBox value="samsung">三星</CheckBox>
+                    <CheckBox value="mi" disabled>小米</CheckBox>
 
+
+
+                    <CheckBox
+                            checked={checkedAll}
+                            indeterminate={indeterminate}
+                            onChange={this.handleCheckedAll}
+                    >全选</CheckBox>
+                    <CheckBoxGroup block
+                    checkedList={checkedList}
+                    onChange = {(v) => this.handleChange(v)}>
+                      {ITEMS.map(item => {
+                        return <CheckBox key={item} value={item}>{item}</CheckBox>
+                      })}
+                    </CheckBoxGroup>
                     <SearchInput mode='inner' onSearch={v => console.log(v)} />
                     <SearchInput block onSearch={v => console.log(v)} />
                     <Switch labelOn="打开" labelOff="关闭" />
@@ -169,8 +209,6 @@ class Root extends Component {
                         Messager.info({ content: 'this is info message' });
                     }}> 全局提示
                      </Button>
-
-
                     <Select>
                         <Option>请选择</Option>
                         <Option value="0">苹果</Option>

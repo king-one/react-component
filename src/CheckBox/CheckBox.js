@@ -1,36 +1,27 @@
 
 import React, {Component,PropTypes} from 'react'
 import classnames from 'classnames'
-import './index.less'
 
 class Checkbox extends Component {
     render() {
         const {
             prefixCls,
-            children, className, block, indeterminate, onClick, value, checked, defaultChecked,
+            children, className, block, indeterminate, value, checked, defaultChecked,
             onChange, disabled, ...other
   } = this.props;
 
         const inputProps = { value, checked, defaultChecked, onChange, disabled }
+        console.log(checked)
 
         const classNames = classnames(prefixCls, {
             [`${prefixCls}-disabled`]: inputProps.disabled,
             [`${prefixCls}-block`]: block,
             [`${prefixCls}-indeterminate`]: indeterminate
         }, className)
-        console.log(checked);
-        console.log(this)
         return (
             <label
                 tabIndex={inputProps.disabled ? -1 : 0}
                 className={classNames}
-                onClick={e => {
-                    if (e.target.tagName === 'INPUT') {
-                        e.stopPropagation()
-                    } else {
-                        onClick && onClick(e)
-                    }
-                }}
                 {...other}
             >
                 <input

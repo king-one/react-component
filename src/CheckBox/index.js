@@ -1,3 +1,4 @@
-import Checkbox from './Checkbox';
+import CheckBox from './CheckBox';
+import CheckBoxGroup from './CheckBoxGroup'
 import './index.less'
-export {Checkbox};
+export {CheckBox,CheckBoxGroup};

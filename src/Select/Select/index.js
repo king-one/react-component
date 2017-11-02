@@ -23,7 +23,7 @@ class Select extends Component{
       e.stopPropagation();
       e.nativeEvent.stopImmediatePropagation();
           this.setState({
-              open:this.state.open ? false : true
+              open:false
           })
     }
     handleSelect = (props) => {
@@ -45,7 +45,6 @@ class Select extends Component{
         }else{
            key === 0 &&  (this.text = children)
         }
-        console.log(this.text)
         return React.cloneElement(child,{
             onSlected: this.handleSelect,
             selected:selectValue ? value === selectValue : key === 0 ? true : false

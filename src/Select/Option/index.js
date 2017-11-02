@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-24 14:40:19 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-10-30 15:43:11
+ * @Last Modified time: 2017-11-02 17:08:27
  */
 
 import React, { PropTypes } from 'react'
@@ -20,7 +20,6 @@ const defaultProps =   {
 }
 const Option = props => {
   const {prefixCls, children, className, data, value, selected, onSlected, ...other } = props;
-  console.log(props)
   const classNames = classnames(
     prefixCls,
     {
