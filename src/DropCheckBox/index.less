@@ -1,0 +1,54 @@
+@import '../variables.less';
+ @DropCheckBox-prefix-cls: ~'@{sw-prefix}-drop-check';
+.@{DropCheckBox-prefix-cls}{
+&-wrap{
+    width: 150px;
+    position: relative;
+    display: inline-block;
+}
+&-open{
+     .@{DropCheckBox-prefix-cls}-box{
+        border-color:@theme-primary-1;
+     } 
+    .@{DropCheckBox-prefix-cls}-icon{
+     color:@theme-primary-1;
+}
+}
+&-box{
+    display: inline-block;
+    width: 100%;
+    border: 1px solid @theme-stroke-5;
+    border-radius: 2px;
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+&-icon{
+    position: absolute;
+    right: 6px;
+    top: 3px;
+    padding: 3px;
+}
+&-over-panel {
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 5px;
+  max-height: 180px;
+  overflow: auto;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+  button{
+    padding: 0 5px;
+    height: 24px;
+    font-size: 12px;
+}
+}
+ }

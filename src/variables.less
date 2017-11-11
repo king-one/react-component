@@ -2,12 +2,11 @@
  * @Author: chen gong 
  * @Date: 2017-10-11 18:27:45 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-10-30 14:26:01
+ * @Last Modified time: 2017-11-07 14:19:07
  */
 /**
  * base colors
  */
-@import './normalize.less';
 @sw-prefix: sw;
 @theme-stroke-1: #333;
 @theme-stroke-2: #444;
@@ -65,5 +64,28 @@
         visibility: hidden;
         zoom: 1;
     }
+}
+.closeBtn(){
+    &:before,
+    &:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #999;
+    border-radius: 30%;
+    transition: background .2s;
+}
+
+&:before {
+    transform: rotate(45deg);
+}
+
+&:after {
+    transform: rotate(-45deg);
+}
 }
 

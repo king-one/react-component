@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-24 15:22:51 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-10-30 20:54:11
+ * @Last Modified time: 2017-11-05 23:23:14
  */
 
 
@@ -135,6 +135,7 @@ class Popover extends Component {
           clearTimeout(this.closeTimer)
         }
         other.onMouseLeave = () => {
+          
           this.closeTimer = setTimeout(() => this.close(), Popover.LAZY_DURATION)
         }
       }

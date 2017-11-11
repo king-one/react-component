@@ -8,21 +8,21 @@ const defaultProps = {
     prefixCls: _PRE_ + '-modal'
 }
 const ModalHeader = props =>{
-    const{children} = props;
+    const{prefixCls,children} = props;
     return(
-        <div className="header">{children}</div>
+        <div className={`${prefixCls}-header`}>{children}</div>
     )
 }
 const ModalBody = props => {
-    const {children} = props;
+    const {prefixCls,children} = props;
     return(
-    <div className="body">{children}</div>
+    <div className={`${prefixCls}-body`}>{children}</div>
     )
 }
 const ModalFooter = props => {
-    const {children,onClose} = props;
+    const {prefixCls,children,onClose} = props;
     return(
-        <div className="footer">
+        <div className={`${prefixCls}-footer`}>
         <Button className="confirm-btn" onClick={onClose}>确定</Button>
         <Button className="cancel-btn" feature='transparent' onClick={onClose}>取消</Button>
         </div>
@@ -79,5 +79,8 @@ class Dialog extends Component{
       }
   }
 Dialog.defaultProps = defaultProps;
+ModalHeader.defaultProps = defaultProps;
+ModalBody.defaultProps = defaultProps;
+ModalFooter.defaultProps = defaultProps;
 Dialog.propTypes = propTypes;
 export {Dialog,ModalHeader,ModalBody,ModalFooter};

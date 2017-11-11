@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-24 17:11:22 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-11-02 17:08:34
+ * @Last Modified time: 2017-11-05 23:27:29
  */
 import React, { PropTypes, Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -23,6 +23,8 @@ class Limit extends Component {
         if (!this.rootNode) {
             this.rootNode = ReactDOM.findDOMNode(this)
         }
+        console.log( this.rootNode)
+        console.log( this.rootNode.offsetWidth < this.rootNode.scrollWidth)
         return this.rootNode.offsetWidth < this.rootNode.scrollWidth
     }
 

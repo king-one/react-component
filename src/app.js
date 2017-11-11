@@ -15,6 +15,9 @@ import SearchInput from './SearchInput';
 import Switch from './Switch';
 import { Messager, Notfify } from './Alert';
 import { Option, Select } from './Select';
+import DropCheckBox from './DropCheckBox';
+import Flyer from './Flyer';
+console.log(Flyer)
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
 const ITEMS = [1,2,3,4,5]
@@ -46,7 +49,28 @@ class Root extends Component {
     this.setState({ checkedList })
   }
     handleClick() {
-        alert(0)
+      var bool = new Flyer({
+        el: "#boll",
+        targetEl:"#target",
+        offset: [600, 200],
+        curvature: 0.0005,
+        duration: 3000,
+        callback: function () {
+            alert("完成后回调")
+        },
+        stepCallback: function (x, y) {
+            // console.log(x, y);
+            $("<div>").appendTo("body").css({
+                "position": "absolute",
+                "top": this.elOriginalTop + y,
+                "left": this.elOriginalLeft + x,
+                "background-color": "#CDCDCD",
+                "width": "5px",
+                "height": "5px",
+                "border-radius": "5px"
+            });
+        }
+    });
     }
     onClick = (e, key) => {
         console.log(key);
@@ -65,8 +89,29 @@ class Root extends Component {
         return (
             <div>
                 <div>
-                    <h4>按钮</h4>
-                    <Button>primary</Button>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                       <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                       <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <h4 id='boll' style={{fontSize:'50px',width:'100px',height:'100px',background:'red'}}>按钮</h4>
+                    <Button onClick={this.handleClick}>primary</Button>
                     <Button feature='minor'>minor</Button>
                     <Button feature='success'>success</Button>
                     <Button feature='warning'>warning</Button>
@@ -115,6 +160,7 @@ class Root extends Component {
                         <Button>按钮4</Button>
                         <Button>按钮5</Button>
                     </ButtonGroup>
+                    <span id='target'>25</span>
                 </div>
                 <div>
                     <h4>布局</h4>
@@ -212,9 +258,13 @@ class Root extends Component {
                     <Select>
                         <Option>请选择</Option>
                         <Option value="0">苹果</Option>
-                        <Option value="1">三星</Option>
+                        <Option value="1">三25545454545485星</Option>
                         <Option value="2">小米</Option>
                     </Select>
+                </div>
+
+                <div>
+                   <span title="2222">5555555</span> <DropCheckBox title={'字段一'} items={[0,1,'2sdf589989weffgrgsfdgedge',3,4]} />
                 </div>
             </div>
         )
