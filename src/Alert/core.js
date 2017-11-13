@@ -33,7 +33,6 @@ class Notification extends Component {
    * @description: 增加提示组件 储存在state中  为每个加入的组件增加key标识
    */
   add = (notice) => {
-    debugger
     const { notices } = this.state;
     let key;
     if (notice.key === undefined || notice.key === null) {
@@ -53,7 +52,6 @@ class Notification extends Component {
    * @decription: 删除
    */
   remove = (key) => {
-    debugger
     console.log(this.state.notices.filter(notice => notice.key !== key));
     // 注意 setState((prevState, props) =>{...}))可以接收一个函数，两个参数，第一个参数表示上一个状态值，第二参数表示当前的 props
     this.setState((prevState) => {
@@ -71,6 +69,8 @@ class Notification extends Component {
       return <Notice
         className={prefixCls}
         {...notice}
+        duration={duration}
+        style={style}
         onClose={(key=notice.key) => this.remove(key)}
       />;
     });
@@ -79,7 +79,7 @@ class Notification extends Component {
       className
     );
     return (
-      <div className={classNames} style={style}  {...other}>
+      <div className={classNames} style={style}  {...other} id='ooo'>
        {noticeNodes}
       </div>
     );
@@ -93,7 +93,7 @@ Notification.defaultProps = defaultProps;
 Notification.instance = properties => {
   const { getContainer, ...props } = properties || {};
   let container;
-  if (getContainer) {
+  if (getContainer) { //暂时没有指定容器的功能  这里为后续拓展准备
     container = getContainer();
   } else {
     container = document.createElement('div');
@@ -103,11 +103,9 @@ Notification.instance = properties => {
   const notificationInstance = ReactDOM.render(<Notification {...props} />, container); //
   return {
     notice(noticeProps) {
-      debugger
-      notificationInstance.add(noticeProps);
+       notificationInstance.add(noticeProps);
     },
     remove(key) {
-      debugger
       notificationInstance.remove(key);
     },
     destroy() {

@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-28 15:14:16 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-10-29 17:22:45
+ * @Last Modified time: 2017-11-12 02:28:24
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -27,15 +27,8 @@ const defaultProps = {
  * @description: 生成提示内容组件 支持装入react elemnet 支持关闭回调
  */
 class Notice extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props)
-    this.state = {
-    };
-  }
-
   componentDidMount() {
-    const { duration } = this.props;
+      const { duration } = this.props;
     if (duration) {
       this.closeTimer = setTimeout(() => {
         this.close();
