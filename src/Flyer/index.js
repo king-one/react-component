@@ -177,7 +177,6 @@ export default class Flyer {
         return this;
     }
     destroy(){
-        debugger
        this.$el.remove()
     }
 }
