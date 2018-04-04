@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-24 17:11:22 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-11-05 23:27:29
+ * @Last Modified time: 2018-04-02 14:38:57
  */
 import React, { PropTypes, Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -16,15 +16,13 @@ class Limit extends Component {
     }
     componentDidMount(){
         this.setState({
-            overflow: this.computWhith()
+            overflow: this.computWidth()
         })
     }
-    computWhith = () => {
+    computWidth = () => {  //计算文本是否溢出 
         if (!this.rootNode) {
             this.rootNode = ReactDOM.findDOMNode(this)
         }
-        console.log( this.rootNode)
-        console.log( this.rootNode.offsetWidth < this.rootNode.scrollWidth)
         return this.rootNode.offsetWidth < this.rootNode.scrollWidth
     }
 
@@ -34,7 +32,7 @@ class Limit extends Component {
             <Popover
                 className={classnames(`${prefixCls}__popover`, className)}
                 content={children.props.children}
-                shouldOpen={showTip ? false : this.state.overflow}
+                shouldOpen={showTip ? false : this.state.overflow}// 指定不显示tooltip则不显示  默认会根据文字宽度计算是否展示toolTip
                 {...other}
             >
                 {React.cloneElement(children, {

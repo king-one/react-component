@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-24 15:23:47 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-10-24 16:57:37
+ * @Last Modified time: 2018-03-17 17:37:37
  */
 
 import React, { Component, PropTypes } from 'react'
@@ -62,7 +62,7 @@ class PopoverContent extends Component {
 }
 
 PopoverContent.childContextTypes = {
-  popoverContent: PropTypes.instanceOf(PopoverContent)  //校验累的实例
+  popoverContent: PropTypes.instanceOf(PopoverContent)  //校验类的实例
 }
 PopoverContent.defaultProps = {
   prefixCls:_PRE_ + '-popover'

@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-24 15:22:51 
  * @Last Modified by: chen gong
- * @Last Modified time: 2017-11-05 23:23:14
+ * @Last Modified time: 2018-04-02 14:52:56
  */
 
 
@@ -19,9 +19,9 @@ window.addEventListener('click', () => {
 
 class Popover extends Component {
 
-  static LAZY_DURATION = 150
+  static LAZY_DURATION = 150  //鼠标移除后显示多久关闭
 
-  static OPENED_POPOVER = Symbol()
+  static OPENED_POPOVER = Symbol() //保证每次的唯一性
 
   constructor(props) {
     super()
@@ -29,17 +29,14 @@ class Popover extends Component {
       open: props.open || false
     }
   }
-
   componentDidMount() {
     if (this.state.open) {
       this.renderContent()
     }
   }
-
   componentWillReceiveProps(nextProps) {
-    'open' in nextProps && this.setState({open: nextProps.open})
+    'open' in nextProps && this.setState({ open: nextProps.open })
   }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.state.open) {
       this.renderContent()
@@ -71,8 +68,6 @@ class Popover extends Component {
   }
 
   /**
-   * @public
-   * @name popover.open()
    * @description 打开浮层
    */
   open = () => {
@@ -90,8 +85,6 @@ class Popover extends Component {
   }
 
   /**
-   * @public
-   * @name popover.close()
    * @description 关闭浮层
    */
   close = () => {
@@ -119,11 +112,11 @@ class Popover extends Component {
       this.containerNode = document.createElement('div')
       document.body.appendChild(this.containerNode)
     }
-    const triggerNode = ReactDOM.findDOMNode(this)
+    const triggerNode = ReactDOM.findDOMNode(this)  //triggerNode 一般指要设置显示与隐藏的dom元素
 
     this.renderContent = () => {
       const {
-        triggerMode, content, open, onToggle, shouldOpen,
+        triggerMode, content, onToggle, shouldOpen,
         shouldClose, disabled, aligned, ...other
       } = this.props
       other.onClick = e => {
@@ -135,7 +128,7 @@ class Popover extends Component {
           clearTimeout(this.closeTimer)
         }
         other.onMouseLeave = () => {
-          
+
           this.closeTimer = setTimeout(() => this.close(), Popover.LAZY_DURATION)
         }
       }
@@ -159,7 +152,7 @@ class Popover extends Component {
   }
 
   render() {
-    const { prefixCls,children, triggerMode, disabled } = this.props
+    const { prefixCls, children, triggerMode, disabled } = this.props
     const { open } = this.state
     const triggerProps = {
       className: classnames(children.props.className, `${prefixCls}__trigger`, {
@@ -195,9 +188,10 @@ Popover.contextTypes = {
 }
 
 Popover.defaultProps = {
-  prefixCls:_PRE_ + '-popover',
+  prefixCls: _PRE_ + '-popover',
   direction: 'up',
-  triggerMode: 'hover'
+  triggerMode: 'hover',
+  shouldOpen:true
 }
 
 Popover.propTypes = {
@@ -206,7 +200,7 @@ Popover.propTypes = {
   content: PropTypes.node,
   direction: PropTypes.oneOf(['up', 'down', 'left', 'right']),
   align: PropTypes.oneOf(['top', 'right', 'bottom', 'left', 'middle']),
-  open: PropTypes.bool,
+  open: PropTypes.bool, //是否默认打开
   onToggle: PropTypes.func,
   shouldOpen: PropTypes.bool,
   shouldClose: PropTypes.func,

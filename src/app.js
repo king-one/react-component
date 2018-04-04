@@ -17,60 +17,59 @@ import { Messager, Notfify } from './Alert';
 import { Option, Select } from './Select';
 import DropCheckBox from './DropCheckBox';
 import Flyer from './Flyer';
-console.log(Flyer)
+import Popover from './Popover';
 const MenuItem = Menu.MenuItem;
 const SubMenu = Menu.SubMenu;
-const ITEMS = [1,2,3,4,5]
+const ITEMS = [1, 2, 3, 4, 5]
 class Root extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             visible: false,
-            checkedList: [] 
-    };
+            checkedList: []
+        };
     }
     // checkbox 全选
-  handleCheckedAll = (e) => {
-    this.setState({
-      checkedList: e.target.checked ? ITEMS.slice() : []
-    })
-  }
+    handleCheckedAll = (e) => {
+        this.setState({
+            checkedList: e.target.checked ? ITEMS.slice() : []
+        })
+    }
 
-  handleChange =  (v) => {
-      Array.prototype.remove = function(val) {
-        var index = this.indexOf(val);
-        if (index > -1) {
-        this.splice(index, 1);
-        }
+    handleChange = (v) => {
+        Array.prototype.remove = function (val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
         };
-    const {checkedList} = this.state;
-    console.log(v);
-    checkedList.indexOf(v) === -1 ? checkedList.push(v) : checkedList.remove(v);
-    this.setState({ checkedList })
-  }
+        const { checkedList } = this.state;
+        checkedList.indexOf(v) === -1 ? checkedList.push(v) : checkedList.remove(v);
+        this.setState({ checkedList })
+    }
     handleClick() {
-      var bool = new Flyer({
-        el: "#boll",
-        targetEl:"#target",
-        offset: [600, 200],
-        curvature: 0.0005,
-        duration: 3000,
-        callback: function () {
-            alert("完成后回调")
-        },
-        stepCallback: function (x, y) {
-            // console.log(x, y);
-            $("<div>").appendTo("body").css({
-                "position": "absolute",
-                "top": this.elOriginalTop + y,
-                "left": this.elOriginalLeft + x,
-                "background-color": "#CDCDCD",
-                "width": "5px",
-                "height": "5px",
-                "border-radius": "5px"
-            });
-        }
-    });
+        var bool = new Flyer({
+            el: "#boll",
+            targetEl: "#target",
+            offset: [600, 200],
+            curvature: 0.0005,
+            duration: 3000,
+            callback: function () {
+                alert("完成后回调")
+            },
+            stepCallback: function (x, y) {
+                // console.log(x, y);
+                $("<div>").appendTo("body").css({
+                    "position": "absolute",
+                    "top": this.elOriginalTop + y,
+                    "left": this.elOriginalLeft + x,
+                    "background-color": "#CDCDCD",
+                    "width": "5px",
+                    "height": "5px",
+                    "border-radius": "5px"
+                });
+            }
+        });
     }
     onClick = (e, key) => {
         console.log(key);
@@ -83,9 +82,9 @@ class Root extends Component {
         this.setState({ visible: false });
     }
     render() {
-            const { checkedList } = this.state
-            const checkedAll = !!checkedList.length && (checkedList.length === ITEMS.length)
-            const indeterminate = !!checkedList.length && (checkedList.length !== ITEMS.length)
+        const { checkedList } = this.state
+        const checkedAll = !!checkedList.length && (checkedList.length === ITEMS.length)
+        const indeterminate = !!checkedList.length && (checkedList.length !== ITEMS.length)
         return (
             <div>
                 <div>
@@ -100,17 +99,17 @@ class Root extends Component {
                     <div>55555</div>
                     <div>55555</div>
                     <div>55555</div>
-                       <div>55555</div>
                     <div>55555</div>
                     <div>55555</div>
                     <div>55555</div>
                     <div>55555</div>
-                       <div>55555</div>
                     <div>55555</div>
                     <div>55555</div>
                     <div>55555</div>
                     <div>55555</div>
-                    <h4 id='boll' style={{fontSize:'50px',width:'100px',height:'100px',background:'red'}}>按钮</h4>
+                    <div>55555</div>
+                    <div>55555</div>
+                    <h4 id='boll' style={{ fontSize: '50px', width: '100px', height: '100px', background: 'red' }}>按钮</h4>
                     <Button onClick={this.handleClick}>primary</Button>
                     <Button feature='minor'>minor</Button>
                     <Button feature='success'>success</Button>
@@ -222,11 +221,21 @@ class Root extends Component {
                 <div>
 
                     <Tooltip title="这是一个tooltip 这是一个tooltip 这是一个tooltip 这是一个tooltip">
-                        <span>---------------<Icon type="circle" /></span>
+                        <span><Icon type="circle" /></span>
+                    </Tooltip>
+
+
+
+                    <Tooltip title="这是一个tooltip 这是一个tooltip 这是一个tooltip 这是一个tooltip">
+                        <span>1111111111</span>
                     </Tooltip>
                     <Limit>
-                        <p style={{ width: '100px', marginLeft: '100px' }}>我是很长的一段文字，鼠标滑过可显示全部</p>
+                        <p style={{ width: '100px', marginLeft: '100px' }}>我是很长的一段文字，鼠标滑过可显示全部1</p>
                     </Limit>
+                    <Limit shouldOpen={false}>
+                        <p style={{ width: '100px', marginLeft: '100px' }}>这是一段很长的文字 默认不显示tooltip</p>
+                    </Limit>
+            
                     <CheckBox value="apple" onChange={e => console.log(e)}>苹果</CheckBox>
                     <CheckBox value="samsung">三星</CheckBox>
                     <CheckBox value="mi" disabled>小米</CheckBox>
@@ -234,16 +243,16 @@ class Root extends Component {
 
 
                     <CheckBox
-                            checked={checkedAll}
-                            indeterminate={indeterminate}
-                            onChange={this.handleCheckedAll}
+                        checked={checkedAll}
+                        indeterminate={indeterminate}
+                        onChange={this.handleCheckedAll}
                     >全选</CheckBox>
                     <CheckBoxGroup block
-                    checkedList={checkedList}
-                    onChange = {(v) => this.handleChange(v)}>
-                      {ITEMS.map(item => {
-                        return <CheckBox key={item} value={item}>{item}</CheckBox>
-                      })}
+                        checkedList={checkedList}
+                        onChange={(v) => this.handleChange(v)}>
+                        {ITEMS.map(item => {
+                            return <CheckBox key={item} value={item}>{item}</CheckBox>
+                        })}
                     </CheckBoxGroup>
                     <SearchInput mode='inner' onSearch={v => console.log(v)} />
                     <SearchInput block onSearch={v => console.log(v)} />
@@ -264,8 +273,12 @@ class Root extends Component {
                 </div>
 
                 <div>
-                   <span title="2222">5555555</span> <DropCheckBox title={'字段一'} items={[0,1,'2sdf589989weffgrgsfdgedge',3,4]} />
+                    <span title="2222">5555555</span> <DropCheckBox title={'字段一'} items={[0, 1, '2sdf589989weffgrgsfdgedge', 3, 4]} />
                 </div>
+
+                {/*<Popover>
+                   这是个popoper
+                </Popover>*/}
             </div>
         )
     }
