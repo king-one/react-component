@@ -1,5 +1,4 @@
 'use strict';
-
 const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -26,5 +25,4 @@ const proConfig = {
     ...config.commonPluginsConfig,
   ]
 }
-
 module.exports = Object.assign(config.baseConfig, proConfig);

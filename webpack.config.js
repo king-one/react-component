@@ -1,22 +1,29 @@
 'use strict';
-// const glob = require('glob');
 const webpack = require('webpack');
 const path = require('path');
-// const AssetsPlugin = require('assets-webpack-plugin');  //生成资源映射表插件  jsp.php后端渲染建议使用这个插件来动态加载js和css
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const htmlPagePluginConfig = require('./htmlpage.config');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const AssetsPlugin = require('assets-webpack-plugin');  //生成资源映射表插件 
 const entries = require('./entries');
 const resolve = str => path.resolve(__dirname, str);
 const commonPluginsConfig = [
-  /*new AssetsPlugin({
-    filename: 'dist/assets.js',
-    processOutput: assets => 'window.WEBPACK_ASSETS=' + JSON.stringify(assets)
-  }), */
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
     'window.jQuery': 'jquery',
     'window.$': 'jquery',
+  }),
+  new HtmlWebpackPlugin({
+    template:resolve("site/index.html"),
+    filename:resolve("dist/index.html"),
+    inject: true, //js插入的位置，true/'head'/'body'/false
+    minify: {
+      collapseWhitespace: false,//删除空白符与换行符
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+    },
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'react-common',
@@ -36,7 +43,6 @@ const commonPluginsConfig = [
     filename: 'css/[name].[hash].css',
     allChunks: true
   }),
-  ...htmlPagePluginConfig.plugin,
 ]
 const baseConfig = {
   entry: Object.assign(entries, {
@@ -51,9 +57,9 @@ const baseConfig = {
   resolve: {
     alias: {
       '@': resolve(''),
-      'components': resolve('src/components'),
+      'src': resolve('src'),
       'node_modules': resolve('node_modules'),
-      'pages': resolve('src/pages'),
+      "site": resolve('site')
     },
     extensions: ['.js', '.jsx']
   },
@@ -91,7 +97,7 @@ const baseConfig = {
       use: {
         loader: 'html-loader',
         options: {
-          attrs: ['img:src'] 
+          attrs: ['img:src']
         }
       }
     },
