@@ -109,6 +109,10 @@ const baseConfig = {
           name: 'font/[name].[ext]',
         }
       }],
+    },
+    {
+      test: /\.md$/,
+      loader : 'raw-loader'
     }]
   }
 }
