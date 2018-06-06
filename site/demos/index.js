@@ -1,8 +1,9 @@
+import classFn  from "./classFn"
 export default {
     components: {
       'Basic': {
-        'button': require('./Button')
-      },
+        'button': new classFn('Button')
+      }
   }
 }
   

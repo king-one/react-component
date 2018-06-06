@@ -29,28 +29,31 @@ export default class Code extends Component {
         const mainCode = code.replace(/import .*/g, '')
         // const dep = _imports[0].match(/import(.*)from/)[1].trim(
         console.log(name)
-        import(`../../../src/${name}/index.js`).then(v =>{
-            console.log(v)
+        import('../../../src').then(v =>{
             const args = ['context', 'React', 'ReactDOM']
             const argv = [this, React, ReactDOM]
+            for (const key in v) {
+                args.push(key)
+                argv.push(v[key])
+              }
+        
             return{
                 args,
                 argv
             }
+        }).then(({args,argv}) =>{
+            const classCode = transform(
+                `  class Demo extends React.Component {
+                        ${mainCode}
+                    }
+                    ReactDOM.render(<Demo {...context.props} />, document.getElementById('${this.renderId}'))
+                `
+                , { presets: ['es2015', 'react'] }).code
+            args.push(classCode)
+            new Function(...args).apply(null, argv)
+        }).catch( err => {
+            throw new Error(err)
         })
-        // .then(({args,argv}) =>{
-        //     const classCode = transform(
-        //         `  class Demo extends React.Component {
-        //                 ${mainCode}
-        //             }
-        //             ReactDOM.render(<Demo {...context.props} />, document.getElementById('${this.renderId}'))
-        //         `
-        //         , { presets: ['es2015', 'react'] }).code
-        //     args.push(classCode)
-        //     new Function(...args).apply(null, argv)
-        // }).catch( err => {
-        //     throw new Error(err)
-        // })
     
 
         // console.log(classCode)
