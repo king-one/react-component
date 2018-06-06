@@ -43,7 +43,9 @@
   },
   "dependencies": {
     "autoprefixer-loader": "^3.2.0",
+    "babel-standalone": "^6.26.0",
     "classlist": "^1.0.1",
+    "code-beautify": "0.0.11",
     "echarts": "^3.6.2",
     "eslint": "^4.8.0",
     "font-awesome": "^4.7.0",

@@ -7,7 +7,6 @@ class Root extends Component {
        return React.createElement(demo[category].default,null)
     }
     render() {
-        console.log(this.getCompontents("button"))
         return (
             <div>
                 {this.getCompontents("button")}

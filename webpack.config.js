@@ -57,7 +57,7 @@ const baseConfig = {
   resolve: {
     alias: {
       '@': resolve(''),
-      'src': resolve('src'),
+      'sw': resolve('src'),
       'node_modules': resolve('node_modules'),
       "site": resolve('site')
     },
