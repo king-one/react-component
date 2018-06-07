@@ -1,0 +1,32 @@
+.header {
+    width: 100%;
+    background-color: #fff;
+    padding: 0 20px;
+    border: 1px solid #ccc;
+    position:fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    z-index: 99;
+    a{
+        color: #555;
+        font-size: 14px;
+    }
+    .header-inner {
+        display: flex;
+        justify-content: flex-start;
+        height: 50px;
+        h1 {
+            height: 100%;
+            line-height: 50px;
+        }
+        >ul {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            >li{
+                padding: 0 20px;
+            }
+        }
+    }
+}

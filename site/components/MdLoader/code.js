@@ -23,7 +23,6 @@ export default class Code extends Component {
         this.runCode(this.originCode)
     }
     runCode = code => {
-        debugger
         const { name } = this.props;
         const _imports = code.match(/import .*/g)
         const mainCode = code.replace(/import .*/g, '')

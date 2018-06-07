@@ -1,15 +1,52 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import demos from "./demos"
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import pages from "./pages"
+import Header from "./components/Header"
+import Side from "./components/Side"
+import "./index.less"
 class Root extends Component {
-    getCompontents(category) {
-       const demo = Object.values(demos.components)[0]
-       return React.createElement(demo[category].default,null)
+    constructor(props) {
+        super(props)
+        this.state = {
+            currentPage: "Button"
+        }
+        this.allPages = [];
+        pages.map(v => {
+            this.allPages = this.allPages.concat(v.components)
+        })
+        console.log(this.allPages);
+    }
+
+    componentWillMount() {
+        window.addEventListener("hashchange", () => {
+            const routes = location.hash.match(/(?:\/(.+))?\/(.+)/);
+            this.setState({
+                currentPage: routes[2]
+            })
+        }, false);
+    }
+    getPageComponent(page) {
+        let pageComponent = null;
+        console.log(page)
+        this.allPages.some(v => {
+            if (v.en === page) {
+                console.log(page)
+                pageComponent = React.createElement(v.component.default, null)
+                return true
+            }
+        })
+        return pageComponent
     }
     render() {
         return (
-            <div>
-                {this.getCompontents("button")}
+            <div className="container">
+                <Header />
+                <div className="main-content">
+                    <Side />
+                    <div className="page-container">
+                        {this.getPageComponent(this.state.currentPage)}
+                    </div>
+                </div>
             </div>
         )
     }
