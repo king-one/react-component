@@ -6,6 +6,7 @@ export default class Code extends Component {
         super(props)
         const { children, marked } = this.props
         const doc = children.match(/([^]*)\n?(```[^]+```)/)
+        console.log(doc)
         this.desc = marked(doc[1])
         this.originCode = doc[2].match(/```(.*)\n?([^]+)```/)[2]
         this.preCode = marked(doc[2])
@@ -27,7 +28,6 @@ export default class Code extends Component {
         const _imports = code.match(/import .*/g)
         const mainCode = code.replace(/import .*/g, '')
         // const dep = _imports[0].match(/import(.*)from/)[1].trim(
-        console.log(name)
         import('../../../src').then(v =>{
             const args = ['context', 'React', 'ReactDOM']
             const argv = [this, React, ReactDOM]
@@ -63,9 +63,9 @@ export default class Code extends Component {
         const { showCode } = this.state
         return (
             <div className="demo-container">
-                <div className="demo-de scription" dangerouslySetInnerHTML={{ __html: this.desc }} />
-                <div id={this.renderId}/>
-                <div className="show-code-btn" onClick={this.handleToggle}>查看代码</div>
+                <div className="demo-description" dangerouslySetInnerHTML={{ __html: this.desc }} />
+                <div id={this.renderId} className="div-render"/>
+                <div className="show-code-btn" onClick={this.handleToggle}>▾示例代码</div>
                 {
                     showCode && <div className="demo-code" dangerouslySetInnerHTML={{ __html: this.preCode }} />
                 }

@@ -47,13 +47,10 @@ render() {
   return (
     <div className="intro-block">
       <div className="block">
-        <span className="demonstration">默认显示颜色</span>
-        <span className="wrapper">
         <Button feature='warning'>warning</Button>
         <Button feature='danger'>danger</Button>
         <Button circle >start</Button>
         <Button feature="transparent">transparent</Button>           
-        </span>
       </div>
     </div>
   )

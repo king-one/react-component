@@ -5,7 +5,7 @@ import marked from 'marked';
 import Code from './code'
 import hltJs from 'highlight.js';
 import './index.less';
-import 'node_modules/highlight.js/styles/atom-one-dark.css';
+import 'node_modules/highlight.js/styles/tomorrow.css';
 // react-markdown  表格支持不佳
 export default class MdLoader extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ export default class MdLoader extends Component {
             return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
         }
         renderer.table = (header, body) => {
-            return `<table border="1" cellspacing="0" cellpadding="5"><thead>${header}</thead><tbody>${body}</tbody></table>`;
+            return `<table cellspacing="0" ><thead>${header}</thead><tbody>${body}</tbody></table>`;
         };
         // 添加自定义配置
         marked.setOptions({ renderer });
@@ -48,7 +48,7 @@ export default class MdLoader extends Component {
             return `<div id=${id}></div>`;
         }));
         return (
-            <div dangerouslySetInnerHTML={{ __html: html }}></div>
+            <div dangerouslySetInnerHTML={{ __html: html }} className="md-page"></div>
         )
     }
 }
