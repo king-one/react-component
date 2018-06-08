@@ -14,12 +14,12 @@ class Root extends Component {
         pages.map(v => {
             this.allPages = this.allPages.concat(v.components)
         })
-        console.log(this.allPages);
     }
 
     componentWillMount() {
         window.addEventListener("hashchange", () => {
             const routes = location.hash.match(/(?:\/(.+))?\/(.+)/);
+            window.scrollTo(0, 0);
             this.setState({
                 currentPage: routes[2]
             })
@@ -30,7 +30,6 @@ class Root extends Component {
         console.log(page)
         this.allPages.some(v => {
             if (v.en === page) {
-                console.log(page)
                 pageComponent = React.createElement(v.component.default, null)
                 return true
             }
@@ -42,6 +41,9 @@ class Root extends Component {
             <div className="container">
                 <Header />
                 <div className="main-content">
+                    <div className="mobile-button" onClick={this.showMenuBtn}>
+                      ≡
+                    </div>
                     <Side />
                     <div className="page-container">
                         {this.getPageComponent(this.state.currentPage)}
