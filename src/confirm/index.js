@@ -9,8 +9,8 @@ class Confirm extends Component {
     state ={
         open:true
     }
-  handleConfirm = () => {
-      this.props.onConfirm && this.props.onConfirm()
+  handleConfirm = (v) => {
+      this.props.onConfirm && v && this.props.onConfirm()
       this.close()
   }
   open = () => {
@@ -40,10 +40,8 @@ class Confirm extends Component {
                {content}
                </Modal.ModalBody>
                   {operation ? operation : (
-                    <div className="footer">
-                      <Button onClick={this.handleConfirm}>{okText}</Button>
-                      <Button feature="transparent" onClick={this.close}>{cancelText}</Button>
-                    </div>
+                     <Modal.ModalFooter onClose={this.handleConfirm}>
+                     </Modal.ModalFooter>
                   )}
             </Modal>
           )

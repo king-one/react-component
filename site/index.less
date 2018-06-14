@@ -10,10 +10,12 @@ li {
 a {
     text-decoration: none;
 }
-body{
-   background: #fff; 
-   font-family:PingFangSC-Thin,Lantinghei SC,Open Sans,Arial,Hiragino Sans GB,Microsoft YaHei,STHeiti,WenQuanYi Micro Hei,SimSun,sans-serif;
+
+body {
+    background: #fff;
+    font-family: PingFangSC-Thin, Lantinghei SC, Open Sans, Arial, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, SimSun, sans-serif;
 }
+
 .main-content {
     margin-top: 50px;
     width: 100%;
@@ -29,7 +31,8 @@ body{
     top: 0;
     padding: 30px;
 }
-@media(max-width:1000px) {
+
+@media(max-width:480px) {
     .mobile-button {
         display: block;
         width: 40px;
@@ -38,22 +41,34 @@ body{
         font-size: 30px;
         text-align: center;
         font-weight: 100;
-        background:#fff;
-        box-shadow: -1px 2px 5px rgba(0,0,0,0.3);
+        background: #fff;
+        box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.3);
         position: fixed;
         top: 55px;
         right: 4px;
-        z-index: 13;
-    
+        z-index: 1000;
     }
     .side-nav {
-       >ul{
-           display: none;
-       }
+        right: -200px;
+        top: 50px;
+        box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
     }
-    .page-container{
-           left: 0!important;
-           padding: 15px 10px;
-           z-index: 12;
+    .m-side-active{
+        right: 0;
+    }
+    table {
+        width: 100%;
+        table-layout: fixed;
+        td,
+        th {
+            white-space: normal;
+            word-break: break-all;
+        }
+    }
+    .page-container {
+        left: 0 !important;
+        padding: 15px 10px;
+        z-index: 12;
     }
 }

@@ -9,6 +9,8 @@ class Modal extends Component {
         prefixCls: PropTypes.string,
         width: PropTypes.number,
         height: PropTypes.number,
+        top: PropTypes.number,
+        left: PropTypes.number,
         measure: PropTypes.string,
         visible: PropTypes.bool,
         showMask: PropTypes.bool,
@@ -93,7 +95,6 @@ class Modal extends Component {
             <Dialog {...props} animationType ={animationType} />,this.containerNode)
     }
     removeInsert(){
-              console.log(this.containerNode);
                ReactDOM.unmountComponentAtNode(this.containerNode);
                document.body.removeChild(document.getElementById(this.mid))
                delete this.containerNode;

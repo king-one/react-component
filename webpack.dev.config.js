@@ -5,14 +5,15 @@ const config = require('./webpack.config');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const devConfig = {
   devServer: {
+    host: '0.0.0.0', // 127.0.0.1 只能本地访问，换成0.0.0.0即可
     contentBase: path.resolve(__dirname),
-    port: 3001
+    port: 810
   },
-  devtool: '#eval-source-map',
+  devtool: 'inline-source-map', //#eval-source-map
   output: {
     filename: 'js/[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:3001/'
+    publicPath: 'http://localhost:810/'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -23,7 +24,7 @@ const devConfig = {
     new webpack.NoEmitOnErrorsPlugin(),
     ...config.commonPluginsConfig,
         new OpenBrowserPlugin({
-      url: 'http://localhost:3001/'
+      url: 'http://localhost:810/'
     })
   ]
 };

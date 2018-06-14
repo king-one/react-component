@@ -2,11 +2,12 @@
  * @Author: chen gong 
  * @Date: 2017-10-28 15:14:16 
  * @Last Modified by: chen gong
- * @Last Modified time: 2018-06-05 17:47:44
+ * @Last Modified time: 2018-03-07 20:27:37
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+
 
 const propTypes = {
   duration: PropTypes.number,
@@ -53,7 +54,7 @@ class Notice extends Component {
   }
 
   render() {
-    const { prefixCls, closable, className,onClose,content, type,...other} = this.props;
+    const { prefixCls, closable, className,onClose,content,duration, type,...other} = this.props;
     const classNames = classnames(
       `${prefixCls}-notice`,{
       [`${prefixCls}-notice-closable`]: closable,

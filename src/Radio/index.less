@@ -1,5 +1,5 @@
 @import '../variables.less';
-@box-prefix-cls: ~'@{sw-prefix}-checkbox';
+@box-prefix-cls: ~'@{sw-prefix}-radio';
 .@{box-prefix-cls} {
     display: inline-block;
     vertical-align: middle;
@@ -20,14 +20,7 @@
         }
     }
     &:focus {
-        outline: none; // .@{box-prefix-cls}-status {
-        //   &:before {
-        //     border-color: @theme-primary-1;
-        //   }
-        // }
-        // .@{box-prefix-cls}-text {
-        //   color: @theme-primary-1;
-        // }
+        outline: none; 
     }
     &-group {
         .@{box-prefix-cls} {

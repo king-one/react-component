@@ -41,9 +41,6 @@ class Root extends Component {
             <div className="container">
                 <Header />
                 <div className="main-content">
-                    <div className="mobile-button" onClick={this.showMenuBtn}>
-                      ≡
-                    </div>
                     <Side />
                     <div className="page-container">
                         {this.getPageComponent(this.state.currentPage)}

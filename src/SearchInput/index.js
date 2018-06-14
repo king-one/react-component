@@ -57,7 +57,7 @@ class SearchInput extends Component {
                     tabIndex="-1"
                     icon="search"
                     size={size}
-                    className={prefixCls}
+                    className={`${prefixCls}-btn`}
                     feature={feature}
                     onClick={this.handleSearch}
                 >

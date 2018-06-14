@@ -7,17 +7,32 @@ const defaultProps = {
     prefixCls: _PRE_ + '-select'
 }
 class Select extends Component {
-    state = {
-        open: false,
-        selectValue: this.props.defaultValue
-    };
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            open: false,
+            selectValue: props.defaultValue
+        };
+    }
     componentDidMount() {
-        document.addEventListener('click', () => {
+        this.oneHandler = () => { //document 点击事件执行了就要清除
             this.setState({
                 open: false
-            })
-        })
+            });
+            document.removeEventListener('click', this.oneHandler)
+        }
+        document.addEventListener('click', this.oneHandler)
+
+    }
+    componentWillReceiveProps(nexProps){
+          if(this.props.defaultValue != nexProps.defaultValue){
+              this.setState({
+                  selectValue:nexProps.defaultValue
+              })
+          }
+    }
+    componentWillUnmount() {
+        document.removeEventListener('click', this.oneHandler)
     }
     dropToggle = (e) => {
         e.stopPropagation();
@@ -25,6 +40,7 @@ class Select extends Component {
         this.setState({
             open: this.state.open ? false : true
         })
+        document.addEventListener('click', this.oneHandler)
     }
     handleSelect = (props) => {
         const { onChange } = this.props;
@@ -34,7 +50,6 @@ class Select extends Component {
         });
         onChange && onChange(props.value);
     }
-
     render() {
         const { selectValue, open } = this.state
         const { prefixCls, children, title } = this.props;
@@ -59,7 +74,7 @@ class Select extends Component {
             <ul className={prefixCls}>
                 <span className={`${prefixCls}-label`}>{title ? title : null}</span>
                 <div className={classNames} onClick={this.dropToggle}>
-                    <span className={`${prefixCls}-box`}>{this.text}</span><Icon type='caret-down' className={`${prefixCls}-icon`}></Icon>
+                    <span className={`${prefixCls}-box`}>{this.text}</span><Icon type='arrow-down' className={`${prefixCls}-icon`}></Icon>
                     <div className={`${prefixCls}-options`}>
                         {open ? options : null}
                     </div>

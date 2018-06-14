@@ -28,19 +28,19 @@ export default class Code extends Component {
         const _imports = code.match(/import .*/g)
         const mainCode = code.replace(/import .*/g, '')
         // const dep = _imports[0].match(/import(.*)from/)[1].trim(
-        import('../../../src').then(v =>{
+        import('../../../src').then(v => {
             const args = ['context', 'React', 'ReactDOM']
             const argv = [this, React, ReactDOM]
             for (const key in v) {
                 args.push(key)
                 argv.push(v[key])
-              }
-        
-            return{
+            }
+
+            return {
                 args,
                 argv
             }
-        }).then(({args,argv}) =>{
+        }).then(({ args, argv }) => {
             const classCode = transform(
                 `  class Demo extends React.Component {
                         ${mainCode}
@@ -50,21 +50,21 @@ export default class Code extends Component {
                 , { presets: ['es2015', 'react'] }).code
             args.push(classCode)
             new Function(...args).apply(null, argv)
-        }).catch( err => {
+        }).catch(err => {
             throw new Error(err)
         })
-    
+
 
         // console.log(classCode)
 
-       
+
     }
     render() {
         const { showCode } = this.state
         return (
             <div className="demo-container">
                 <div className="demo-description" dangerouslySetInnerHTML={{ __html: this.desc }} />
-                <div id={this.renderId} className="div-render"/>
+                <div id={this.renderId} className="div-render" />
                 <div className="show-code-btn" onClick={this.handleToggle}>▾示例代码</div>
                 {
                     showCode && <div className="demo-code" dangerouslySetInnerHTML={{ __html: this.preCode }} />

@@ -8,8 +8,8 @@ handleCheckBoxChange = (v) =>{
   render() {
     const {
      prefixCls, children, className,  onChange,  values, checkedList, block, ...other
-    } = this.props
-    let checkboxes
+    } = this.props;
+    let checkboxes;
     if (values) {
       checkboxes = values.map((value, i) => {
        const checked =  checkedList.length === 0 ?  false : checkedList.indexOf(value) !== -1;

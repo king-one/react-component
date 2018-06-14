@@ -52,7 +52,6 @@ class Notification extends Component {
    * @decription: 删除
    */
   remove = (key) => {
-    console.log(this.state.notices.filter(notice => notice.key !== key));
     // 注意 setState((prevState, props) =>{...}))可以接收一个函数，两个参数，第一个参数表示上一个状态值，第二参数表示当前的 props
     this.setState((prevState) => {
       return {
@@ -62,7 +61,6 @@ class Notification extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { notices } = this.state;
     const { prefixCls ,className, style , duration, ...other } = this.props;
     const noticeNodes = notices.map((notice) => {

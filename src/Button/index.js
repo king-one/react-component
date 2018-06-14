@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-10-10 17:15:04 
  * @Last Modified by: chen gong
- * @Last Modified time: 2018-06-05 17:58:49
+ * @Last Modified time: 2017-11-13 17:17:26
  */
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
@@ -14,6 +14,7 @@ const propTypes = {
     type: PropTypes.oneOf(['button', 'reset', 'submit']),
     feature: PropTypes.string
 };
+
 const defaultProps = {
     prefixCls: _PRE_ + '-btn',
     type: 'button',
@@ -36,7 +37,7 @@ class Button extends Component {
         )
         return (
             <button type={type} className={classNames} { ...other }>
-                {icon && <Icon type={icon} />}
+                {icon && <Icon  type={icon} />}
                 {children}
             </button>
         )

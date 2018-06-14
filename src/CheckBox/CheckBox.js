@@ -11,8 +11,7 @@ class Checkbox extends Component {
   } = this.props;
 
         const inputProps = { value, checked, defaultChecked, onChange, disabled }
-        console.log(checked)
-
+     
         const classNames = classnames(prefixCls, {
             [`${prefixCls}-disabled`]: inputProps.disabled,
             [`${prefixCls}-block`]: block,
