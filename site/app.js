@@ -7,8 +7,9 @@ import "./index.less"
 class Root extends Component {
     constructor(props) {
         super(props)
+        const routes = location.hash.match(/(?:\/(.+))?\/(.+)/);
         this.state = {
-            currentPage: "Button"
+            currentPage: routes ? routes[2] ? routes[2] : "Button" : "Button"
         }
         this.allPages = [];
         pages.map(v => {
@@ -20,6 +21,7 @@ class Root extends Component {
         window.addEventListener("hashchange", () => {
             const routes = location.hash.match(/(?:\/(.+))?\/(.+)/);
             window.scrollTo(0, 0);
+            console.log(routes[2])
             this.setState({
                 currentPage: routes[2]
             })
@@ -27,7 +29,6 @@ class Root extends Component {
     }
     getPageComponent(page) {
         let pageComponent = null;
-        console.log(page)
         this.allPages.some(v => {
             if (v.en === page) {
                 pageComponent = React.createElement(v.component.default, null)
@@ -37,13 +38,14 @@ class Root extends Component {
         return pageComponent
     }
     render() {
+        const {currentPage} = this.state
         return (
             <div className="container">
                 <Header />
                 <div className="main-content">
-                    <Side />
+                    <Side currentPage={currentPage}/>
                     <div className="page-container">
-                        {this.getPageComponent(this.state.currentPage)}
+                        {this.getPageComponent(currentPage)}
                     </div>
                 </div>
             </div>

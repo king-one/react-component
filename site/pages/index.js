@@ -10,9 +10,9 @@ export default [{
           component:Fn('Button'),
         },
         {
-          en:"Alert",
-          cn:"警告",
-          component:Fn('Alert'),
+          en:"Pagination",
+          cn:"分页",
+          component:Fn('Pagination'),
         },
         {
           en:"Input",

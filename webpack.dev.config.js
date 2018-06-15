@@ -9,7 +9,7 @@ const devConfig = {
     contentBase: path.resolve(__dirname),
     port: 810
   },
-  devtool: 'inline-source-map', //#eval-source-map
+  devtool: 'eval-source-map', //#eval-source-map
   output: {
     filename: 'js/[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),

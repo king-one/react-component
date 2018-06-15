@@ -6,7 +6,6 @@ export default class Code extends Component {
         super(props)
         const { children, marked } = this.props
         const doc = children.match(/([^]*)\n?(```[^]+```)/)
-        console.log(doc)
         this.desc = marked(doc[1])
         this.originCode = doc[2].match(/```(.*)\n?([^]+)```/)[2]
         this.preCode = marked(doc[2])
@@ -47,17 +46,12 @@ export default class Code extends Component {
                     }
                     ReactDOM.render(<Demo {...context.props} />, document.getElementById('${this.renderId}'))
                 `
-                , { presets: ['es2015', 'react'] }).code
+                , { presets: ['es2015','stage-2', 'stage-3','react']}).code
             args.push(classCode)
             new Function(...args).apply(null, argv)
         }).catch(err => {
             throw new Error(err)
         })
-
-
-        // console.log(classCode)
-
-
     }
     render() {
         const { showCode } = this.state

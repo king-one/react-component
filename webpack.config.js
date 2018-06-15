@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const AssetsPlugin = require('assets-webpack-plugin');  //生成资源映射表插件 
 const entries = require('./entries');
 const resolve = str => path.resolve(__dirname, str);
@@ -13,6 +14,7 @@ const commonPluginsConfig = [
     'window.jQuery': 'jquery',
     'window.$': 'jquery',
   }),
+  new BundleAnalyzerPlugin(),
   new HtmlWebpackPlugin({
     template:resolve("site/index.html"),
     filename:resolve("dist/index.html"),
@@ -49,9 +51,6 @@ const baseConfig = {
     'react-common': [
       'react',
       'react-dom',
-      'react-router',
-      'redux',
-      'react-redux'
     ]
   }),
   resolve: {

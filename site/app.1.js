@@ -235,7 +235,7 @@ class Root extends Component {
                     <Limit shouldOpen={false}>
                         <p style={{ width: '100px', marginLeft: '100px' }}>这是一段很长的文字 默认不显示tooltip</p>
                     </Limit>
-            
+
                     <CheckBox value="apple" onChange={e => console.log(e)}>苹果</CheckBox>
                     <CheckBox value="samsung">三星</CheckBox>
                     <CheckBox value="mi" disabled>小米</CheckBox>

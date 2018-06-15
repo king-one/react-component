@@ -5,7 +5,7 @@ export default class Header extends Component{
    return <header className="header">
     <div className="header-inner">
       <h1>
-         logo
+         <img src={require('../../assets/logo.png')} alt="logo"/>
       </h1>
       <ul className="nav">
       <li className="nav-item">

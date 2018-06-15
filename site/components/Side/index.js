@@ -4,13 +4,13 @@ import "./index.less"
 export default class Side extends Component {
   state = { showMenuBtn: false }
   showMenuBtn = e => {
-    console.log(e)
     this.setState({
       showMenuBtn: !this.state.showMenuBtn
     })
   }
   render() {
     const { showMenuBtn } = this.state;
+    const {currentPage} = this.props;
     return <div>
       {showMenuBtn && <div className="drag-bg"></div>}
       <nav className={showMenuBtn ? "side-nav m-side-active" : "side-nav"}>
@@ -26,7 +26,7 @@ export default class Side extends Component {
                   {
                     v.components.map((page, k) => {
                       return (
-                        <li className="nav-item" key={k}>
+                        <li className={currentPage === page.en ? 'nav-item active':'nav-item '} key={k}>
                           <a href={`#/${v.categoryEn}/${page.en}`}>{page.cn}</a>
                         </li>
                       )
