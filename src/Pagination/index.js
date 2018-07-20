@@ -2,7 +2,7 @@
  * @Author: chen gong 
  * @Date: 2017-08-05 16:32:20 
  * @Last Modified by: chen gong
- * @Last Modified time: 2018-06-15 16:07:48
+ * @Last Modified time: 2018-07-20 20:53:20
  */
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames'
@@ -137,7 +137,6 @@ class Pagination extends Component {
   }
   // 跳转到某一页
   handleGo = e => {
-    debugger
     if(e.key !== "Enter")
     return
     const { currentPage, pageCount} = this.state;

@@ -38,12 +38,12 @@ class Root extends Component {
         return pageComponent
     }
     render() {
-        const {currentPage} = this.state
+        const { currentPage } = this.state
         return (
             <div className="container">
                 <Header />
                 <div className="main-content">
-                    <Side currentPage={currentPage}/>
+                    <Side currentPage={currentPage} />
                     <div className="page-container">
                         {this.getPageComponent(currentPage)}
                     </div>
